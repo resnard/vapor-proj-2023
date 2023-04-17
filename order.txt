@@ -1,0 +1,11 @@
+backend:
+model
+controller
+routes
+
+front end:
+reducer
+constant
+actions
+store
+component

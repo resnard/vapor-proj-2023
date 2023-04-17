@@ -1,0 +1,123 @@
+MERN Project requirements
+
+
+
+machine problems 20pts use datatables and admin protected  components
+
+
+
+mp1 Node/express CRUD api
+
+
+
+mp2 React CRUD components for mp1
+
+
+
+mp3 Node/express CRUD api
+
+
+
+mp4 React CRUD components for mp3
+
+
+
+mp5 Node/express CRUD api
+
+
+
+mp6 React CRUD components for mp5
+
+
+
+mp7 transactions CRUD api/components. only administrators can update the transaction. export PDF when the transaction is completed. React-pdf library
+
+
+
+quiz 1 15pts
+
+
+
+Simple validation/error messages Toast Alert and similar notifications libraries 10pts
+
+React validation for CRUD form components. you can use React-hook-form 15pts
+
+
+
+quiz 2 15pts
+
+
+
+search component/api on homepage  10pts
+
+
+
+search component/api with autocomplete on homepage  you can use react-autocomplete react-search-autocomplete or equivalent libraries 15pts
+
+
+
+quiz 3 15pts
+
+
+
+pagination on homepage (datatable pagination is not applicable) 10pts
+
+infinite scroll on homepage react-infinite-scroll-component 15pts
+
+
+
+quiz 4 15pts
+
+
+
+three(3) js charts  (bar, pie and line ). simple count/average/percentages REchart or chart-js 10pts
+
+
+
+three(3) js charts (bar, pie and line ). chart will change based on input such as dates or keywords REcharts or chart-js  15pts
+
+
+
+
+
+unit test 2 20pts
+
+Login/Logout Authentication with token generation  15pts
+
+google or facebook Login/Logout Authentication with token generation react-oauth/google react-facebook-login 20pts
+
+
+
+unit test 3 20pts
+
+stateless components props 10pts
+
+stateful components using useState hook 15pts
+
+Redux for state management 20pts  
+
+
+
+term test 50pts
+
+functional requirements completeness and program execution (minimal errors) 10
+
+App complexity. 10
+
+UI/UX Design. 10
+
+Mongodb Schema Design 10
+
+Code Contribution 10
+
+
+
+
+
+This is a two(2) student project. you may or may not get the same grades.
+
+no 1.0 grade since this is a team activity
+
+
+
+good luck
