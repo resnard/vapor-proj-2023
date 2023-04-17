@@ -1,4 +1,5 @@
-# shopit-2023
+# vapor-2023
+based from:
 MERN stack shopping app from UDEMY
 
 #features
