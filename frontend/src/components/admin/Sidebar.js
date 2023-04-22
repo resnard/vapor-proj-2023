@@ -12,7 +12,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle"><i
-                            className="fa fa-product-hunt"></i> Games</a>
+                            className="fa fa-gamepad"></i> Games</a>
 
                         <ul className="collapse list-unstyled" id="productSubmenu">
 
