@@ -65,7 +65,7 @@ const Home = () => {
         <Fragment>
             {loading ? <Loader /> : (
                 <Fragment>
-                    <MetaData title={'Buy Best Products Online'} />
+                    <MetaData title={'Buy Best Games Online'} />
                     <h1 id="products_heading">Latest Games</h1>
                     <section id="products" className="container mt-5">
                         {/* <div className="row">
