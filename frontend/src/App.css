@@ -1,3 +1,6 @@
+/* colors
+fa9c23 - 5e81ac  */
+
 html,
 body {
   font-family: 'Amazon Ember';
@@ -27,13 +30,13 @@ body {
 }
 
 nav {
-  background-color: #191919;
+  background-color: #2E3440;
   padding: 1rem 1rem;
 }
 
 #search_btn {
-  background-color: #0078d7;
-  /* febd69 - 0078d7 */
+  background-color: #88c0d0;
+  /* febd69 - 88c0d0 */
 }
 
 .input-group {
@@ -48,7 +51,7 @@ nav {
 
 #login_btn,
 #view_btn {
-  background-color: #0078d7;
+  background-color: #88c0d0;
   padding: 0.4rem 1.8rem;
   font-family: calibri;
 }
@@ -59,7 +62,7 @@ nav {
 }
 
 #cart_count {
-  background-color: #0078d7;
+  background-color: #88c0d0;
   padding: 0.2rem 0.5rem;
   border-radius: 0.2rem;
   color: black;
@@ -94,7 +97,7 @@ nav {
 }
 
 #view_btn {
-  background-color: #fa9c23;
+  background-color: #5e81ac;
   color: white;
 }
 
@@ -208,9 +211,9 @@ footer {
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #1e1e1e;
-  /*fa9c23 - 1e1e1e */
-  border-color: #1e1e1e transparent;
+  border: 6px solid #88c0d0;
+  /*fa9c23 - 88c0d0 */
+  border-color: #88c0d0 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -500,7 +503,7 @@ footer {
 #sidebar {
   min-width: 100%;
   max-width: 100%;
-  background: #191919;
+  background: #2e3440;
   color: #fff;
   transition: all 0.3s;
 }
@@ -510,11 +513,11 @@ footer {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #191919;
+  background: #2e3440;
 }
 #sidebar ul.components {
   padding: 5px 0px;
-  border-bottom: 1px solid #191919;
+  border-bottom: 1px solid #2e3440;
 }
 
 #sidebar ul li a {
@@ -525,7 +528,7 @@ footer {
   text-decoration: none;
 }
 #sidebar ul li a:hover {
-  color: #191919;
+  color: #2e3440;
   background: #fff;
 }
 
@@ -536,7 +539,7 @@ footer {
 #sidebar ul li.active > a,
 a[aria-expanded='true'] {
   color: #fff;
-  background: #191919;
+  background: #2e3440;
 }
 a[data-toggle='collapse'] {
   position: relative;

@@ -35,23 +35,23 @@ const productSchema = new mongoose.Schema({
     ],
     category: {
         type: String,
-        required: [true, 'Please select category for this product'],
+        required: [true, 'Please select a genre for this game'],
         enum: {
             values: [
-                'Electronics',
-                'Cameras',
-                'Laptops',
-                'Accessories',
-                'Headphones',
-                'Food',
-                "Books",
-                'Clothes/Shoes',
-                'Beauty/Health',
-                'Sports',
-                'Outdoor',
-                'Home'
+                'RPG',
+                'Rogue Like',
+                'Single Player',
+                'MOBA',
+                'Strategy',
+                'Puzzle',
+                "First Person Shooter",
+                'Indie',
+                'Arcarde',
+                'Platformer',
+                'Horror',
+                'Idle'
             ],
-            message: 'Please select correct category for product'
+            message: 'Please select correct genre for game'
         }
     },
     seller: {

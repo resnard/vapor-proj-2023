@@ -112,9 +112,9 @@ const UpdateProduct = () => {
                     <Fragment>
                         <div className="wrapper my-5">
                             <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
-                                <h1 className="mb-4">Update Product</h1>
+                                <h1 className="mb-4">Update Game</h1>
                                 <div className="form-group">
-                                    <label htmlFor="name_field">Name</label>
+                                    <label htmlFor="name_field">Title</label>
                                     <input
 
                                         type="text"
@@ -167,7 +167,7 @@ const UpdateProduct = () => {
 
                                 <div className="form-group">
 
-                                    <label htmlFor="category_field">Category</label>
+                                    <label htmlFor="category_field">Genre</label>
 
                                     <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
 
@@ -203,7 +203,7 @@ const UpdateProduct = () => {
 
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="seller_field">Seller Name</label>
+                                    <label htmlFor="seller_field">Developer Name</label>
                                     <input
 
                                         type="text"

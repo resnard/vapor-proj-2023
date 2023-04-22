@@ -38,29 +38,18 @@ const NewProduct = () => {
 
     const categories = [
 
-        'Electronics',
-
-        'Cameras',
-
-        'Laptops',
-
-        'Accessories',
-
-        'Headphones',
-
-        'Food',
-
-        "Books",
-
-        'Clothes/Shoes',
-
-        'Beauty/Health',
-
-        'Sports',
-
-        'Outdoor',
-
-        'Home'
+        'RPG',
+                'Rogue Like',
+                'Single Player',
+                'MOBA',
+                'Strategy',
+                'Puzzle',
+                "First Person Shooter",
+                'Indie',
+                'Arcarde',
+                'Platformer',
+                'Horror',
+                'Idle'
 
     ]
 
@@ -188,13 +177,13 @@ const NewProduct = () => {
 
                             <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
 
-                                <h1 className="mb-4">New Product</h1>
+                                <h1 className="mb-4">New Game</h1>
 
 
 
                                 <div className="form-group">
 
-                                    <label htmlFor="name_field">Name</label>
+                                    <label htmlFor="name_field">Title</label>
 
                                     <input
 
@@ -244,7 +233,7 @@ const NewProduct = () => {
 
                                 <div className="form-group">
 
-                                    <label htmlFor="category_field">Category</label>
+                                    <label htmlFor="category_field">Genre:</label>
 
                                     <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
 
@@ -284,7 +273,7 @@ const NewProduct = () => {
 
                                 <div className="form-group">
 
-                                    <label htmlFor="seller_field">Seller Name</label>
+                                    <label htmlFor="seller_field">Developer Name:</label>
 
                                     <input
 
