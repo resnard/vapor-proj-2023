@@ -74,21 +74,21 @@ const ProductDetails = () => {
             stars.forEach((star, index) => {
                 if (e.type === 'click') {
                     if (index < this.starValue) {
-                        star.classList.add('orange');
+                        star.classList.add('frost1');
                         setRating(this.starValue)
                     } else {
-                        star.classList.remove('orange')
+                        star.classList.remove('frost1')
                     }
                 }
                 if (e.type === 'mouseover') {
                     if (index < this.starValue) {
-                        star.classList.add('yellow');
+                        star.classList.add('frost2');
                     } else {
-                        star.classList.remove('yellow')
+                        star.classList.remove('frost2')
                     }
                 }
                 if (e.type === 'mouseout') {
-                    star.classList.remove('yellow')
+                    star.classList.remove('frost2')
                 }
             })
         }
@@ -115,39 +115,48 @@ const ProductDetails = () => {
                                 ))}
                             </Carousel>
                         </div>
+                       
 
                         <div className="col-12 col-lg-5 mt-5">
                             <h3>{product.name}</h3>
                             <p id="product_id">Product # {product._id}</p>
-
-                            <hr />
-
+                            <p id="product_seller mb-3">Sold by: <strong>{product.seller}</strong></p>
+                           
                             <div className="rating-outer">
                                 <div className="rating-inner" style={{ width: `${(product.ratings / 5) * 100}%` }}></div>
                             </div>
                             <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
 
+                            {/* <hr /> */}
+                           
+                          
+
                             <hr />
 
+                          
+
+                            <h4 className="mt-2">Description:</h4>
+                            <p>{product.description}</p>
+                            <hr />
+
+                           
+
                             <p id="product_price">${product.price}</p>
+                            <p>Status: <span id="stock_status" className={product.stock > 0 ? 'greenColor' : 'redColor'} >{product.stock > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
+
                             <div className="stockCounter d-inline">
                                 <span className="btn btn-danger minus" onClick={decreaseQty}>-</span>
 
                                 <input type="number" className="form-control count d-inline" value={quantity} readOnly />
 
-                                <span className="btn btn-primary plus" onClick={increaseQty}>+</span>
+                                <span className="btn btn-info plus" onClick={increaseQty}>+</span>
                             </div>
                             <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4" onClick={addToCart} >Add to Cart</button>
                             <hr />
-                            <p>Status: <span id="stock_status" className={product.stock > 0 ? 'greenColor' : 'redColor'} >{product.stock > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
-
-                            <hr />
-
-                            <h4 className="mt-2">Description:</h4>
-                            <p>{product.description}</p>
-                            <hr />
-                            <p id="product_seller mb-3">Sold by: <strong>{product.seller}</strong></p>
-
+                           
+                           
+                           
+                           
                             {user ? <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal" onClick={setUserRatings}>
                                 Submit Your Review
                             </button>

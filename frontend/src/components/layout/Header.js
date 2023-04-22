@@ -63,7 +63,7 @@ const Header = () => {
 
 								<Link className="dropdown-item" to="/cart" style={{ textDecoration: 'none' }} >
 								{/* <span id="cart" className="ml-3">Cart</span> */}
-								<span id="cart">Cart                  </span>
+								<span id="cart">Your Cart                  </span>
 								<span  class="float-right" className="ml-1" id="cart_count">{cartItems.length}</span>
 								</Link>
 
