@@ -257,15 +257,15 @@ footer {
 }
 
 #card_item_price {
-  color: #0078d7;
+  color: #a3be8c;
   font-weight: bold;
   font-size: 1.4rem;
 }
 
 #checkout_btn,
 .review-btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #81a1c1;
+  border-color: #81a1c1;
   margin-top: 2rem;
   border-radius: 5rem;
 }
