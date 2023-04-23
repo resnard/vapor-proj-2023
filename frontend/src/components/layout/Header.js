@@ -3,6 +3,9 @@ import '../../App.css'
 import Search from './Search'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import DeleteIcon from '@mui/icons-material/Delete';
+import {Tooltip, IconButton} from '@mui/material';
+
 
 import { logout } from '../../actions/userActions'
 const Header = () => {
@@ -22,6 +25,7 @@ const Header = () => {
 						<Link to="/">
 							<img src="/images/vapor_logo.png" />
 						</Link>
+						
 					</div>
 				</div>
 				<div className="col-12 col-md-6 mt-2 mt-md-0">
@@ -33,26 +37,28 @@ const Header = () => {
 					
 					{user ? (
 
-						<div className="ml-4 dropdown d-inline">
-
+						<div className="float-right dropdown d-inline">
+							<Tooltip title={user && user.name} placement="top" arrow>
 							<Link to="#!" className="btn dropdown-toggle text-white mr-4" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+							
 								<figure className="avatar avatar-nav">
+								
 									<img
 										src={user.avatar && user.avatar.url}
-
+										
 										alt={user && user.name}
 
 										className="rounded-circle"
-
+										
 									/>
 
 								</figure>
 
-								<span>{user && user.name}</span>
+								{/* <span>{user && user.name}</span> */}
 
 							</Link>
-							<div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
+							</Tooltip>
+							<div className="dropdown-menu dropdown-r-a" aria-labelledby="dropDownMenuButton">
 
 
 

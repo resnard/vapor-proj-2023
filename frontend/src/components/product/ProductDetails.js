@@ -105,7 +105,7 @@ const ProductDetails = () => {
             {loading ? <Loader /> : (
                 <Fragment>
                     <MetaData title={product.name} />
-                    <div className="row d-flex justify-content-around">
+                    <div className="wrapper1 row d-flex justify-content-around">
                         <div className="col-12 col-lg-5 img-fluid" id="product_image">
                             <Carousel pause='hover'>
                                 {product.images && product.images.map(image => (
@@ -117,7 +117,7 @@ const ProductDetails = () => {
                         </div>
                        
 
-                        <div className="col-12 col-lg-5 mt-5">
+                        <div className="col-12 col-lg-5 mt-5 pl-5">
                             <h3>{product.name}</h3>
                             <p id="product_id">Product # {product._id}</p>
                             <p id="product_seller mb-3">Sold by: <strong>{product.seller}</strong></p>
@@ -206,11 +206,14 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                         </div>
+                      
+
                         {product.reviews && product.reviews.length > 0 && (
 
                             <ListReviews reviews={product.reviews} />
 
                         )}
+                       
                     </div>
 
                 </Fragment>

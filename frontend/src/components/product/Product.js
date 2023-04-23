@@ -20,7 +20,7 @@ const Product = ({ product }) => {
 	// 		</div>
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 my-3">
-             <div class="offer offer-radius offer-success">
+             <div class="offer offer-radius offer-success ">
              <div class="shape">
 	 				<div class="shape-text">
                      <p>${product.price}</p>							
@@ -29,10 +29,10 @@ const Product = ({ product }) => {
            
             <div className="p-3 rounded">
                 <img
-                    className="card-img-top mx-auto"
+                    className="card-img-top mx-auto d-flex"
                     src={product.images[0].url}
                 />
-                <div className="card-body d-flex flex-column">
+                <div className="card-body d-flex flex-column p-3 ">
                     <h5 className="card-title">
                         <a href="">{product.name}</a>
                     </h5>
@@ -41,8 +41,9 @@ const Product = ({ product }) => {
                             <div className="rating-inner" style={{ width: `${(product.ratings / 5) * 100}%` }}></div>
                         </div>
                         <span id="no_of_reviews">({product.numOfReviews} reviews)</span>
-                    </div><br></br>
-                    <span class="fifty-chars">{product.description}</span> <br></br>
+                    </div> <br></br>
+                  <div class="descw">
+                    <span class="desctxt">{product.description}</span></div><br></br>
                    
                    
                     {/* <BrowserRouter> */}

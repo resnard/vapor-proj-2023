@@ -162,7 +162,7 @@ const UsersList = () => {
 
                 actions: <Fragment>
 
-                    <Link to={`/admin/user/${user._id}`} className="btn btn-primary py-1 px-2">
+                    <Link to={`/admin/user/${user._id}`} className="btn btn-info py-1 px-2">
 
                         <i className="fa fa-pencil"></i>
 
@@ -198,7 +198,7 @@ const UsersList = () => {
 
             <MetaData title={'All Users'} />
 
-            <div className="row">
+            <div className="row white">
 
                 <div className="col-12 col-md-2">
 
@@ -218,11 +218,11 @@ const UsersList = () => {
 
                                 data={setUsers()}
 
-                                className="px-3"
+                                className="px-3 table-light"
 
-                                bordered
+                                // bordered
 
-                                striped
+                                // striped
 
                                 hover
 

@@ -45,7 +45,8 @@ const ProductsList = () => {
                 {
                     label: 'ID',
                     field: 'id',
-                    sort: 'asc'
+                    sort: 'asc',
+                    
                 },
                 {
                     label: 'Name',
@@ -76,7 +77,7 @@ const ProductsList = () => {
                 price: `$${product.price}`,
                 stock: product.stock,
                 actions: <Fragment>
-                    <Link to={`/admin/product/${product._id}`} className="btn btn-primary py-1 px-2">
+                    <Link to={`/admin/product/${product._id}`} className="btn btn-info py-1 px-2">
                         <i className="fa fa-pencil"></i>
                     </Link>
                     <button className="btn btn-danger py-1 px-2 ml-2" onClick={() => deleteProductHandler(product._id)}>
@@ -95,7 +96,7 @@ const ProductsList = () => {
     return (
         <Fragment>
           <MetaData title={'All Games'} />
-            <div className="row">
+            <div className="row white">
                 <div className="col-12 col-md-2">
                     <Sidebar />
                 </div>
@@ -105,11 +106,13 @@ const ProductsList = () => {
                         {loading ? <Loader /> : (
 
                             <MDBDataTable
+                            
                                 data={setProducts()}
-                                className="px-3"
-                                bordered
-                                striped
-                                hover
+                                className="table-light px-3 "
+                                // bordered
+                                // text-white
+                                // striped
+                                // hover
                             />
                         )}
                     </Fragment>

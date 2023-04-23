@@ -33,6 +33,19 @@ const productSchema = new mongoose.Schema({
             },
         }
     ],
+    platform: {
+        type: String,
+        required: [true, 'Please select a platform for this game'],
+        enum: {
+            values: [
+                'PC',
+                'X-BOX',
+                'Play Station',
+                'PC & Console',
+            ],
+            message: 'Please select correct platform for game'
+        }
+    },
     category: {
         type: String,
         required: [true, 'Please select a genre for this game'],

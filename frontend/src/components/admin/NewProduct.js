@@ -26,6 +26,8 @@ const NewProduct = () => {
 
     const [description, setDescription] = useState('');
 
+    const [platform, setPlatform] = useState('');
+
     const [category, setCategory] = useState('');
 
     const [stock, setStock] = useState(0);
@@ -50,6 +52,15 @@ const NewProduct = () => {
                 'Platformer',
                 'Horror',
                 'Idle'
+
+    ]
+
+    const platforms = [
+
+        "PC",
+        "X-BOX",
+        "PlayStation",
+        "PC & Console"
 
     ]
 
@@ -109,6 +120,8 @@ const NewProduct = () => {
 
         formData.set('description', description);
 
+        formData.set('platform', platform);
+
         formData.set('category', category);
 
         formData.set('stock', stock);
@@ -159,7 +172,7 @@ const NewProduct = () => {
 
         <Fragment>
 
-            <MetaData title={'New Product'} />
+            <MetaData title={'New Game'} />
 
             <div className="row">
 
@@ -173,7 +186,7 @@ const NewProduct = () => {
 
                     <Fragment>
 
-                        <div className="wrapper my-5">
+                        <div className="wrapper my-5 white">
 
                             <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
 
@@ -229,24 +242,23 @@ const NewProduct = () => {
 
                                 </div>
 
+                                <div className="form-group">
+                                    <label htmlFor="platform_field">Platform:</label>
+                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}>
+                                        {platforms.map(platform => (
+                                            <option key={platform} value={platform} >{platform}</option>
+                                        ))}
+                                    </select>
+                                </div>
 
 
                                 <div className="form-group">
-
                                     <label htmlFor="category_field">Genre:</label>
-
                                     <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
-
                                         {categories.map(category => (
-
                                             <option key={category} value={category} >{category}</option>
-
                                         ))}
-
-
-
                                     </select>
-
                                 </div>
 
                                 <div className="form-group">

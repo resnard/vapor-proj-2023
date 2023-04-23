@@ -41,7 +41,7 @@ const Dashboard = () => {
 
     return (
         <Fragment>
-            <div className="row">
+            <div className="row white">
                 <div className="col-12 col-md-2">
                     <Sidebar />
                 </div>
@@ -155,12 +155,15 @@ const Dashboard = () => {
                                 </div>
 
                             </div>
+                            <span>Customer Sales Chart:</span>
                             <Fragment>
                                 <UserSalesChart data={customerSales} />
                             </Fragment>
+                            <span>Monthly Sales Chart:</span>
                             <Fragment>
                                 <MonthlySalesChart data={salesPerMonth} />
                             </Fragment>
+                            <span>Product Sales Chart:</span>
                             <Fragment>
                                 <ProductSalesChart data={productSales} />
                             </Fragment>

@@ -37,8 +37,8 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
     return (
-        <ResponsiveContainer width="90%" height={1000}>
-            <PieChart width={1000} height={1000}>
+        <ResponsiveContainer width="80%" height={500}>
+            <PieChart >
             {/* <Pie data={data} dataKey="percent" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" /> */}
                 <Pie
                     dataKey="percent"
@@ -47,8 +47,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
                     data={data}
                     cx="50%"
                     cy="50%"
-                    outerRadius={300}
+                    outerRadius={200}
                     fill="#8884d8"
+                    height="200px"
+                    width="200px"
+                    options={{ maintainAspectRatio: false }}
                     // label={renderCustomizedLabel}
                     // labelLine={false}
                     label

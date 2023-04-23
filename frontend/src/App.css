@@ -8,12 +8,13 @@ fa9c23 - 5e81ac
 }
 html,
 body {
-  font-family: 'Amazon Ember';
+  font-family: 'Trebuchet MS';
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  background-color: #4c566a;
 }
 
 /* Scroll Bar */
@@ -78,6 +79,7 @@ nav {
 /* Home page */
 #products_heading {
   margin-top: 1.8rem;
+  text-align: center;
 }
 
 .card {
@@ -324,8 +326,8 @@ footer {
 }
 
 .wrapper form .btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #5e81ac;
+  border-color: #5e81ac;
   color: white;
   margin-top: 2.5rem;
 }
@@ -586,6 +588,7 @@ ul.CTAs a {
 #products_table .btn {
   padding: 0.2rem 0.5rem;
   margin-left: 0.4rem;
+  
 }
 
 /* Dashboard */
@@ -615,6 +618,9 @@ ul.CTAs a {
   color: #e3e3e3;
 }
 
+.white{
+  color: white;
+}
 .star:first-child {
   padding-left: 0;
 }
@@ -640,11 +646,22 @@ ul.CTAs a {
   color: grey;
 }
 
-.fifty-chars {
-  width: 100ch;
+
+.desctxt{
+  max-width: 280px;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  height: 50px;
+  max-height: 50px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.fifty-chars {
+  overflow: hidden;
+  
+
 }
 
 .shape{    
@@ -655,7 +672,7 @@ ul.CTAs a {
 	transform:rotate(360deg);
 }
 .offer{
-	background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+	background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden; height: 450px;
 }
 .offer:hover {
     -webkit-transform: scale(1.1); 
@@ -678,9 +695,9 @@ transition: all 0.4s ease-in-out;
 .offer-danger .shape{
 	border-color: transparent #d9534f transparent transparent;
 }
-.offer-success {	border-color: #4c566a; }
+.offer-success {	border-color: #5e81ac; }
 .offer-success .shape{
-	border-color: transparent #4c566a transparent transparent;
+	border-color: transparent #5e81ac transparent transparent;
 }
 .offer-default {	border-color: #999999; }
 .offer-default .shape{
@@ -709,3 +726,33 @@ transition: all 0.4s ease-in-out;
 .offer-content{
 	padding:0 20px 10px;
 }
+
+.dropdown-r-a{
+  right: 0; left: auto;
+}
+
+.comment{
+  border: 1px solid rgba(216, 222, 233, 1);
+  background-color: rgba(255, 255, 255, 0.973);
+  float: left;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-top: 10px;
+  display: inline;
+  color: black;
+  width: 800px;
+}
+
+.wrapper1 {
+  background-color: #d8dee9;
+  padding-bottom: 52px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+  
