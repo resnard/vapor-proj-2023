@@ -102,17 +102,21 @@ const ProductsList = () => {
                 </div>
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        <h1 className="my-5">All Games</h1>
+                   <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">All Games</strong>
+</h3>
+</div>
+                        {/* <h1 className="my-5">All Games</h1> */}
                         {loading ? <Loader /> : (
 
                             <MDBDataTable
                             
                                 data={setProducts()}
-                                className="table-light px-3 "
-                                // bordered
+                                className="table-light px-3 mx-auto"
+                                bordered
                                 // text-white
                                 // striped
-                                // hover
+                                hover
                             />
                         )}
                     </Fragment>

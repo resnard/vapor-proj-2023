@@ -210,7 +210,10 @@ const OrdersList = () => {
 
                     <Fragment>
 
-                        <h1 className="my-5">All Orders</h1>
+                    <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">All Orders</strong>
+</h3>
+</div>
 
                         {loading ? <Loader /> : (
 
@@ -218,12 +221,10 @@ const OrdersList = () => {
 
                                 data={setOrders()}
 
-                                className="px-3"
-
+                                className="table-light px-3 mx-auto"
                                 bordered
-
-                                striped
-
+                                // text-white
+                                // striped
                                 hover
 
                             />

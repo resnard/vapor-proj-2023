@@ -28,11 +28,18 @@ const Cart = () => {
     return (
         <Fragment>
             <MetaData title={'Your Cart'} />
+
+            <div class="ribbon-wrapper">
+  <h3 class="ribbon">
+<strong class="ribbon-inner">Your Cart</strong>
+</h3>
+</div>
             {cartItems.length === 0 ? <h2 className="mt-5">Your Cart is Empty</h2> : (
                 <Fragment>
-                    <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2>
+                 
+                    {/* <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2> */}
                     <div className="row d-flex justify-content-between">
-                        <div className="col-12 col-lg-8">
+                        <div className="col-12 col-lg-8 bord-cont">
                             {cartItems.map(item => (
                                 <Fragment key={item.product}>
                                     <hr />
@@ -67,7 +74,7 @@ const Cart = () => {
                                 </Fragment>
                             ))}
                         </div>
-                        <div className="col-12 col-lg-3 my-4">
+                        <div className="col-12 col-lg-3 my-4 white">
                             <div id="order_summary">
                                 <h4>Order Summary</h4>
                                 <hr />

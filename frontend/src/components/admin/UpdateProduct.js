@@ -13,24 +13,36 @@ const UpdateProduct = () => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    const [platform, setPlatform] = useState('');
     const [stock, setStock] = useState(0);
     const [seller, setSeller] = useState('');
     const [images, setImages] = useState([]);
     const [oldImages, setOldImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([])
     const categories = [
-        'Electronics',
-        'Cameras',
-        'Laptops',
-        'Accessories',
-        'Headphones',
-        'Food',
-        "Books",
-        'Clothes/Shoes',
-        'Beauty/Health',
-        'Sports',
-        'Outdoor',
-        'Home'
+
+        'RPG',
+                'Rogue Like',
+                'Single Player',
+                'MOBA',
+                'Strategy',
+                'Puzzle',
+                "First Person Shooter",
+                'Indie',
+                'Arcarde',
+                'Platformer',
+                'Horror',
+                'Idle'
+
+    ]
+
+    const platforms = [
+
+        "PC",
+        "X-BOX",
+        "PlayStation",
+        "PC & Console"
+
     ]
 
     const dispatch = useDispatch();
@@ -52,6 +64,7 @@ const UpdateProduct = () => {
             setPrice(product.price);
             setDescription(product.description);
             setCategory(product.category);
+            setPlatform(product.platform);
             setSeller(product.seller);
             setStock(product.stock)
             setOldImages(product.images)
@@ -110,7 +123,7 @@ const UpdateProduct = () => {
                 </div>
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        <div className="wrapper my-5">
+                        <div className="wrapper my-5 white">
                             <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
                                 <h1 className="mb-4">Update Game</h1>
                                 <div className="form-group">
@@ -163,7 +176,14 @@ const UpdateProduct = () => {
 
                                 </div>
 
-
+                                <div className="form-group">
+                                    <label htmlFor="platform_field">Platform:</label>
+                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}>
+                                        {platforms.map(platform => (
+                                            <option key={platform} value={platform} >{platform}</option>
+                                        ))}
+                                    </select>
+                                </div>
 
                                 <div className="form-group">
 

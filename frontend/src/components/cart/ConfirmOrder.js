@@ -29,7 +29,7 @@ const ConfirmOrder = () => {
             <MetaData title={'Confirm Order'} />
             <CheckoutSteps shipping confirmOrder />
             <div className="row d-flex justify-content-between">
-                <div className="col-12 col-lg-8 mt-5 order-confirm">
+                <div className="col-12 col-lg-8 mt-5 order-confirm bord-cont">
                     <h4 className="mb-3">Shipping Info</h4>
                     <p><b>Name:</b> {user && user.name}</p>
                     <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
@@ -73,7 +73,7 @@ const ConfirmOrder = () => {
 
                 <div className="col-12 col-lg-3 my-4">
 
-                    <div id="order_summary">
+                    <div id="order_summary" class="white mt-4">
 
                         <h4>Order Summary</h4>
 

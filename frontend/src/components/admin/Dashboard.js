@@ -46,7 +46,10 @@ const Dashboard = () => {
                     <Sidebar />
                 </div>
                 <div className="col-12 col-md-10">
-                    <h1 className="my-4">Dashboard</h1>
+                <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">Dashboard</strong>
+</h3>
+</div>
                     {loading ? <Loader /> : (
                         <Fragment>
                             <MetaData title={'Admin Dashboard'} />

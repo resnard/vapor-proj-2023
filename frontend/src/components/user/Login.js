@@ -48,7 +48,7 @@ const Login = () => {
                 <Fragment>
                     <MetaData title={'Login'} />
 
-                    <div className="row wrapper">
+                    <div className="row wrapper white">
                         <div className="col-10 col-lg-5">
                             <form className="shadow-lg" onSubmit={submitHandler}>
                                 <h1 className="mb-3">Login</h1>
@@ -74,7 +74,7 @@ const Login = () => {
                                     />
                                 </div>
 
-                                <Link to="/password/forgot" className="float-right mb-4">Forgot Password?</Link>
+                                <Link to="/password/forgot" className="float-right mb-4 ">Forgot Password?</Link>
 
                                 <button
                                     id="login_button"
@@ -84,7 +84,7 @@ const Login = () => {
                                     LOGIN
                                 </button>
 
-                                <Link to="/register" className="float-right mt-3">New User?</Link>
+                                <Link to="/register" className="float-right mt-3 ">New User?</Link><br></br>
                             </form>
                         </div>
                     </div>

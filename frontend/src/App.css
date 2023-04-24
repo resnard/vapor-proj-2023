@@ -281,6 +281,19 @@ footer {
   border: 1px solid #e3e3e3;
   border-radius: 1rem;
   padding: 2rem 1.5rem;
+  margin-right: 20px
+}
+
+.bord-cont {
+  background-color: #d8dee9;
+  padding-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 25px;
+  width: 70%;
+  height: 85%;
+  border-radius: 20px;
+  box-shadow: 0px 25px 40px #1687d933;
 }
 
 .order-summary-values {
@@ -406,7 +419,7 @@ footer {
 }
 
 .active-step {
-  background: #fa9c23;
+  background: #5e81ac;
   color: #fff;
 }
 
@@ -414,7 +427,7 @@ footer {
   float: left;
   width: 0;
   border-top: 20px solid transparent;
-  border-left: 15px solid #fa9c23;
+  border-left: 15px solid #5e81ac;
   border-bottom: 20px solid transparent;
   margin-left: -1px;
 }
@@ -422,9 +435,9 @@ footer {
 .triangle2-active {
   width: 0;
   float: left;
-  border-top: 20px solid #fa9c23;
+  border-top: 20px solid #5e81ac;
   border-left: 15px solid #fff;
-  border-bottom: 20px solid #fa9c23;
+  border-bottom: 20px solid #5e81ac;
   margin-right: -1px;
 }
 
@@ -755,4 +768,70 @@ transition: all 0.4s ease-in-out;
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
+
+.ribbon-wrapper {
+  position: relative;
+  z-index: 1;
+  margin: 5% auto;
+}
+
+.ribbon {
+  font-size: 20px!important;
+  text-transform: uppercase;
+  width: 50%;
+  position: relative;
+  background: #5E81AC;
+  color: #FFF;
+  text-align: center;
+  padding: 1em 2em;
+  margin: 2em auto 3em
+}
+
+.ribbon:after,
+.ribbon:before {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -1em;
+  border: 1.5em solid #5E81AC;
+  z-index: -1
+}
+
+.ribbon:before {
+  left: -2em;
+  border-right-width: 1.5em;
+  border-left-color: transparent
+}
+
+.ribbon:after {
+  right: -2em;
+  border-left-width: 1.5em;
+  border-right-color: transparent
+}
+
+.ribbon .ribbon-inner:after,
+.ribbon .ribbon-inner:before {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: #2E3440 transparent transparent;
+  bottom: -1em
+}
+
+.ribbon .ribbon-inner:before {
+  left: 0;
+  border-width: 1em 0 0 1em
+}
+
+.ribbon .ribbon-inner:after {
+  right: 0;
+  border-width: 1em 1em 0 0
+}
+
+.mt-2 {
+  margin-top: 12px !important;
+}
+
+
   

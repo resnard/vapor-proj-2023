@@ -210,7 +210,10 @@ const UsersList = () => {
 
                     <Fragment>
 
-                        <h1 className="my-5">All Users</h1>
+                    <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">All Users</strong>
+</h3>
+</div>
 
                         {loading ? <Loader /> : (
 
