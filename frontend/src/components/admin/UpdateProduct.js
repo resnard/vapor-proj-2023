@@ -140,6 +140,8 @@ const UpdateProduct = () => {
 
                                         onChange={(e) => setName(e.target.value)}
 
+                                        required
+
                                     />
 
                                 </div>
@@ -162,6 +164,8 @@ const UpdateProduct = () => {
 
                                         onChange={(e) => setPrice(e.target.value)}
 
+                                        required
+
                                     />
 
                                 </div>
@@ -172,13 +176,13 @@ const UpdateProduct = () => {
 
                                     <label htmlFor="description_field">Description</label>
 
-                                    <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                                    <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}  required></textarea>
 
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="platform_field">Platform:</label>
-                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}>
+                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}  required>
                                         {platforms.map(platform => (
                                             <option key={platform} value={platform} >{platform}</option>
                                         ))}
@@ -189,7 +193,7 @@ const UpdateProduct = () => {
 
                                     <label htmlFor="category_field">Genre</label>
 
-                                    <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
+                                    <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}  required>
 
                                         {categories.map(category => (
 
@@ -218,7 +222,7 @@ const UpdateProduct = () => {
                                         value={stock}
 
                                         onChange={(e) => setStock(e.target.value)}
-
+                                        required           
                                     />
 
                                 </div>
@@ -235,7 +239,7 @@ const UpdateProduct = () => {
                                         value={seller}
 
                                         onChange={(e) => setSeller(e.target.value)}
-
+                                        required        
                                     />
 
                                 </div>
@@ -251,6 +255,7 @@ const UpdateProduct = () => {
                                             onChange={onChange}
 
                                             multiple
+                                            required
 
                                         />
 

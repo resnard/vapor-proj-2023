@@ -209,6 +209,7 @@ const NewProduct = () => {
                                         value={name}
 
                                         onChange={(e) => setName(e.target.value)}
+                                        required
 
                                     />
 
@@ -229,6 +230,7 @@ const NewProduct = () => {
                                         value={price}
 
                                         onChange={(e) => setPrice(e.target.value)}
+                                        required
 
                                     />
 
@@ -238,13 +240,13 @@ const NewProduct = () => {
 
                                     <label htmlFor="description_field">Description</label>
 
-                                    <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                                    <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}  required></textarea>
 
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="platform_field">Platform:</label>
-                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}>
+                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}  required>
                                         {platforms.map(platform => (
                                             <option key={platform} value={platform} >{platform}</option>
                                         ))}
@@ -254,7 +256,7 @@ const NewProduct = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="category_field">Genre:</label>
-                                    <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
+                                    <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}  required>
                                         {categories.map(category => (
                                             <option key={category} value={category} >{category}</option>
                                         ))}
@@ -276,6 +278,7 @@ const NewProduct = () => {
                                         value={stock}
 
                                         onChange={(e) => setStock(e.target.value)}
+                                        required
 
                                     />
 
@@ -298,6 +301,7 @@ const NewProduct = () => {
                                         value={seller}
 
                                         onChange={(e) => setSeller(e.target.value)}
+                                        required
 
                                     />
 
@@ -326,6 +330,8 @@ const NewProduct = () => {
                                             onChange={onChange}
 
                                             multiple
+
+                                            required
 
                                         />
 

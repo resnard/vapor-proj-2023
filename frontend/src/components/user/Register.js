@@ -88,6 +88,7 @@ const Register = () => {
                                 name='name'
                                 value={name}
                                 onChange={onChange}
+                                required
                             />
                         </div>
 
@@ -100,6 +101,7 @@ const Register = () => {
                                 name='email'
                                 value={email}
                                 onChange={onChange}
+                                required
                             />
                         </div>
 
@@ -112,6 +114,7 @@ const Register = () => {
                                 name='password'
                                 value={password}
                                 onChange={onChange}
+                                required
                             />
                         </div>
 
@@ -135,6 +138,7 @@ const Register = () => {
                                         id='customFile'
                                         accept="images/*"
                                         onChange={onChange}
+                                        required
                                     />
                                     <label className='custom-file-label' htmlFor='customFile'>
                                         Choose Avatar

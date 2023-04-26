@@ -754,7 +754,7 @@ transition: all 0.4s ease-in-out;
   padding-top: 10px;
   display: inline;
   color: black;
-  width: 800px;
+  width: 100%;
 }
 
 .wrapper1 {
@@ -832,6 +832,21 @@ transition: all 0.4s ease-in-out;
 .mt-2 {
   margin-top: 12px !important;
 }
+
+.gen-container{
+  background-color: #2E3440;
+}
+
+/* .MuiInputBase-input  {
+  background: beige;
+} */
+
+.MuiTextField-root {
+  background: white;
+  border-radius: 5px;
+}
+/* Cart Button Animation */
+
 
 
   

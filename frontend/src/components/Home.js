@@ -30,18 +30,20 @@ const Home = () => {
     const createSliderWithTooltip = Slider.createSliderWithTooltip;
     const Range = createSliderWithTooltip(Slider.Range);
     const categories = [
-        'Electronics',
-        'Cameras',
-        'Laptops',
-        'Accessories',
-        'Headphones',
-        'Food',
-        "Books",
-        'Clothes/Shoes',
-        'Beauty/Health',
-        'Sports',
-        'Outdoor',
-        'Home'
+
+        'RPG',
+                'Rogue Like',
+                'Single Player',
+                'MOBA',
+                'Strategy',
+                'Puzzle',
+                "First Person Shooter",
+                'Indie',
+                'Arcarde',
+                'Platformer',
+                'Horror',
+                'Idle'
+
     ]
 
     useEffect(() => {
@@ -61,6 +63,7 @@ const Home = () => {
         let count = filteredProductsCount
     }
     console.log(keyword, count, filteredProductsCount, resPerPage)
+    console.log(products)
     return (
         <Fragment>
             {loading ? <Loader /> : (
@@ -81,7 +84,7 @@ const Home = () => {
 
                             {keyword ? (
                                 <Fragment>
-                                    <div className="col-6 col-md-3 mt-5 mb-5">
+                                    <div className="col-6 col-md-3 mt-5 mb-5 shadow-lg gen-container white"><br></br>
                                         <div className="px-5">
                                             <Range
                                                 marks={{
@@ -99,10 +102,10 @@ const Home = () => {
                                                 value={price}
                                                 onChange={price => setPrice(price)}
                                             />
-                                            <hr className="my-5" />
-                                            <div className="mt-5">
+                                            <hr className="" />
+                                            <div className="">
                                                 <h4 className="mb-3">
-                                                    Categories
+                                                   Genres:
                                                 </h4>
                                                 <ul className="pl-0">
                                                     {categories.map(category => (

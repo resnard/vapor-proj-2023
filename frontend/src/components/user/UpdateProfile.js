@@ -85,7 +85,7 @@ const UpdateProfile = () => {
                                 value={name}
 
                                 onChange={(e) => setName(e.target.value)}
-
+                                required
                             />
 
                         </div>
@@ -109,7 +109,7 @@ const UpdateProfile = () => {
                                 value={email}
 
                                 onChange={(e) => setEmail(e.target.value)}
-
+                                required
                             />
 
                         </div>
@@ -155,7 +155,7 @@ const UpdateProfile = () => {
                                         accept='image/*'
 
                                         onChange={onChange}
-
+                                        required
                                     />
 
                                     <label className='custom-file-label' htmlFor='customFile'>

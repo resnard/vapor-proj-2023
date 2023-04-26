@@ -92,7 +92,8 @@ const ProductsList = () => {
 
         dispatch(deleteProduct(id))
 
-    }
+    } 
+    console.log(setProducts());
     return (
         <Fragment>
           <MetaData title={'All Games'} />
@@ -118,6 +119,7 @@ const ProductsList = () => {
                                 // striped
                                 hover
                             />
+                           
                         )}
                     </Fragment>
                 </div>

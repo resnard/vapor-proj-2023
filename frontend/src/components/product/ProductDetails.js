@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProductDetails, clearErrors, newReview } from '../../actions/productActions'
 import { addItemToCart } from '../../actions/cartActions'
 import { NEW_REVIEW_RESET } from '../../constants/productConstants'
+
 const ProductDetails = () => {
     const dispatch = useDispatch();
     let { id } = useParams();

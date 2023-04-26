@@ -159,7 +159,7 @@ const UpdateUser = () => {
                                         value={name}
 
                                         onChange={(e) => setName(e.target.value)}
-
+                                        required
                                     />
 
                                 </div>
@@ -181,7 +181,7 @@ const UpdateUser = () => {
                                         value={email}
 
                                         onChange={(e) => setEmail(e.target.value)}
-
+                                        required
                                     />
 
                                 </div>
@@ -201,10 +201,14 @@ const UpdateUser = () => {
                                         value={role}
 
                                         onChange={(e) => setRole(e.target.value)}
-
+                                        required
                                     >
 
                                         <option value="user">user</option>
+
+                                        <option value="applicant">applicant</option>
+
+                                        <option value="employee">employee</option>
 
                                         <option value="admin">admin</option>
 

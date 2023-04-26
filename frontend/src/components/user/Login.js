@@ -60,7 +60,7 @@ const Login = () => {
                                         className="form-control"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                    />
+                                    required/>
                                 </div>
 
                                 <div className="form-group">
@@ -71,7 +71,7 @@ const Login = () => {
                                         className="form-control"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                    />
+                                   required />
                                 </div>
 
                                 <Link to="/password/forgot" className="float-right mb-4 ">Forgot Password?</Link>

@@ -59,6 +59,8 @@ const Payment = () => {
 
                                 className="form-control"
 
+                                required
+
 
 
                             />
@@ -79,6 +81,8 @@ const Payment = () => {
 
                                 className="form-control"
 
+                                required
+
 
 
                             />
@@ -98,6 +102,8 @@ const Payment = () => {
                                 id="card_cvc_field"
 
                                 className="form-control"
+
+                                required
 
 
 
