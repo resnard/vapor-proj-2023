@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux'
 
 
 const Search = () => {
-  const {products} = useSelector(state => state.products);
+  // const {products} = useSelector(state => state.products);
   const [productsAll, setProdA] = useState([])
-  const productData = productsAll.products
+  // const productData = productsAll.products
  
   const fetchProductsData = () => {
     // fetch("https://jsonplaceholder.typicode.com/users")
@@ -18,7 +18,7 @@ const Search = () => {
         return response.json()
       })
       .then(productsA => {
-        setProdA(productsA)
+        setProdA(productsA.products)
       })
   }
 
@@ -26,12 +26,8 @@ const Search = () => {
     fetchProductsData()
   }, [])
 
-console.log("product array:", productData)
-console.log("product array 1:", products)
-  
     const [keyword, setKeyword] = useState('');
     let navigate = useNavigate();
-
 
     const searchHandler = (e) => {
         e.preventDefault()
@@ -50,7 +46,7 @@ console.log("product array 1:", products)
         freeSolo
         id="free-solo-2-demo"
         // disableClearable
-        options={productData.map((options) => options.name)}
+        options={productsAll.map((options) => options.name)}
         renderInput={(params) => (
           <TextField
           defaultValue="Small"
