@@ -63,7 +63,7 @@ const Home = () => {
         let count = filteredProductsCount
     }
     console.log(keyword, count, filteredProductsCount, resPerPage)
-    console.log(products)
+    console.log("Site products:", products)
     return (
         <Fragment>
             {loading ? <Loader /> : (
