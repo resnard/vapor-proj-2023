@@ -6,9 +6,14 @@ import CheckoutSteps from './CheckoutSteps'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, clearErrors } from '../../actions/orderActions'
 import { clearCart } from '../../actions/cartActions';
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const Payment = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
+    const goBack = () => {
+		navigate(-1);
+	}
     const { user } = useSelector(state => state.auth)
     const { cartItems, shippingInfo } = useSelector(state => state.cart);
     const { error } = useSelector(state => state.newOrder)
@@ -43,6 +48,9 @@ const Payment = () => {
     return (
         <Fragment>
             <MetaData title={'Payment'} />
+            <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
             <CheckoutSteps shipping confirmOrder payment />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
@@ -53,7 +61,7 @@ const Payment = () => {
 
                             <input
 
-                                type="text"
+                                type="number"
 
                                 id="card_num_field"
 
@@ -135,7 +143,7 @@ const Payment = () => {
 
                 </div>
 
-            </div>
+            </div><br></br><br></br>
 
 
 

@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react'
 import { Link, useNavigate  } from 'react-router-dom'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MetaData from '../layout/MetaData'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
 const Cart = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
+    const goBack = () => {
+		navigate(-1);
+	}
     const { cartItems } = useSelector(state => state.cart)
     const increaseQty = (id, quantity, stock) => {
         const newQty = quantity + 1;
@@ -28,8 +33,11 @@ const Cart = () => {
     return (
         <Fragment>
             <MetaData title={'Your Cart'} />
-
-            <div class="ribbon-wrapper">
+          
+            <IconButton sx={{ml: 3, my: 1, position: 'static'}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
+            <div class="ribbon-wrapper mt-n5">
   <h3 class="ribbon">
 <strong class="ribbon-inner">Your Cart</strong>
 </h3>

@@ -5,6 +5,8 @@ import MetaData from '../layout/MetaData'
 import CheckoutSteps from './CheckoutSteps'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingInfo } from '../../actions/cartActions'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const Shipping = () => {
     const countriesList = Object.values(countries)
     const { shippingInfo } = useSelector(state => state.cart)
@@ -16,6 +18,9 @@ const Shipping = () => {
 
     const dispatch = useDispatch();
     let navigate = useNavigate();
+    const goBack = () => {
+		navigate(-1);
+	}
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(saveShippingInfo({ address, city, phoneNo, postalCode, country }))
@@ -24,7 +29,11 @@ const Shipping = () => {
     return (
         <Fragment>
             <MetaData title={'Shipping Info'} />
+            <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>    
             <CheckoutSteps shipping />
+           
             <div className="row wrapper white">
                 <div className="col-10 col-lg-5">
                     <form className="shadow-lg" onSubmit={submitHandler}>

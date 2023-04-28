@@ -220,14 +220,14 @@ const UsersList = () => {
                             <MDBDataTable
 
                                 data={setUsers()}
+                                className="px-3 white"
 
-                                className="px-3 table-light"
-
-                                // bordered
-
-                                // striped
-
+                                bordered
+            
+                                striped
+            
                                 hover
+            
 
                             />
 

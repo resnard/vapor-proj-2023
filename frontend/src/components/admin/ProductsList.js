@@ -113,11 +113,14 @@ const ProductsList = () => {
                             <MDBDataTable
                             
                                 data={setProducts()}
-                                className="table-light px-3 mx-auto"
-                                bordered
-                                // text-white
-                                // striped
-                                hover
+                                className="px-3 white"
+
+                    bordered
+
+                    striped
+
+                    hover
+
                             />
                            
                         )}

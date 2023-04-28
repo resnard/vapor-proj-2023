@@ -70,7 +70,11 @@ const ListOrders = () => {
 
             <MetaData title={'My Orders'} />
 
-            <h1 className="my-5">My Orders</h1>
+            <div class="ribbon-wrapper">
+                    <h3 class="ribbon">
+                    <strong class="ribbon-inner">My Orders</strong>
+                    </h3>
+                    </div>
 
             {loading ? <Loader /> : (
 
@@ -78,7 +82,7 @@ const ListOrders = () => {
 
                     data={setOrders()}
 
-                    className="px-3"
+                    className="px-3 white"
 
                     bordered
 

@@ -1,43 +1,29 @@
 import React, { Fragment, useState, useEffect } from 'react'
-
 import { useNavigate, useParams } from "react-router-dom";
-
-
-
 import MetaData from '../layout/MetaData'
-
 import Sidebar from './Sidebar'
-
 import { toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import { updateUser, getUserDetails, clearErrors } from '../../actions/userActions'
-
 import { UPDATE_USER_RESET } from '../../constants/userConstants'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 
 const UpdateUser = () => {
 
     const [name, setName] = useState('')
-
     const [email, setEmail] = useState('')
-
     const [role, setRole] = useState('')
-
     const dispatch = useDispatch();
-
     let navigate = useNavigate();
-
+    const goBack = () => {
+		navigate(-1);
+	}
     const { error, isUpdated } = useSelector(state => state.user);
-
     const { user } = useSelector(state => state.userDetails)
-
     const {id} = useParams();
 
     const errMsg = (message = '') => toast.error(message, {
@@ -47,9 +33,7 @@ const UpdateUser = () => {
     });
 
     const successMsg = (message = '') => toast.success(message, {
-
         position: toast.POSITION.BOTTOM_CENTER
-
     });
 
 
@@ -123,6 +107,7 @@ const UpdateUser = () => {
         <Fragment>
 
             <MetaData title={`Update User`} />
+          
 
             <div className="row">
 
@@ -132,8 +117,10 @@ const UpdateUser = () => {
 
                 </div>
 
-                <div className="col-12 col-md-10">
-
+                <div className="col-12 col-md-10 white">
+                <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
                     <div className="row wrapper">
 
                         <div className="col-10 col-lg-5">

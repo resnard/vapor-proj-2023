@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
 import { toast } from 'react-toastify';
@@ -15,9 +15,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProductDetails, clearErrors, newReview } from '../../actions/productActions'
 import { addItemToCart } from '../../actions/cartActions'
 import { NEW_REVIEW_RESET } from '../../constants/productConstants'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
+    let navigate = useNavigate()
+    const goBack = () => {
+		navigate(-1);
+	}
     let { id } = useParams();
     const [quantity, setQuantity] = useState(1)
     const { loading, error, product } = useSelector(state => state.productDetails);
@@ -106,7 +112,16 @@ const ProductDetails = () => {
             {loading ? <Loader /> : (
                 <Fragment>
                     <MetaData title={product.name} />
-                    <div className="wrapper1 row d-flex justify-content-around">
+                    <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
+   <div class="ribbon-wrapper mt-n5">
+                    <h3 class="ribbon">
+                    <strong class="ribbon-inner">Product Details</strong>
+                    </h3>
+                    </div>
+                    <div className="wrapper1 row  d-flex justify-content-around">
+                   
                         <div className="col-12 col-lg-5 img-fluid" id="product_image">
                             <Carousel pause='hover'>
                                 {product.images && product.images.map(image => (

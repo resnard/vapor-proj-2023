@@ -70,10 +70,10 @@ const Home = () => {
                 <Fragment>
                     <MetaData title={'Buy Best Games Online'} />
                     <div class="ribbon-wrapper">
-  <h3 class="ribbon">
-<strong class="ribbon-inner">Our Latest Games</strong>
-</h3>
-</div>
+                    <h3 class="ribbon">
+                    <strong class="ribbon-inner">Our Latest Games</strong>
+                    </h3>
+                    </div>
                     <section id="products" className="container mt-5">
                         {/* <div className="row">
                             {products && products.map(product => (

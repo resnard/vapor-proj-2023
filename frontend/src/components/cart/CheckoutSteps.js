@@ -4,7 +4,7 @@ const CheckoutSteps = ({ shipping, confirmOrder, payment
     // , confirmOrder, 
 }) => {
     return (
-        <div className="checkout-progress d-flex justify-content-center mt-5">
+        <div className="checkout-progress d-flex justify-content-center mt-n4">
             {shipping ? <Link to='/shipping' className="float-right white">
                 <div className="triangle2-active"></div>
                 <div className="step active-step">Shipping</div>

@@ -1,20 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react'
-
 import { useNavigate } from 'react-router-dom'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MetaData from '../layout/MetaData'
 import Sidebar from './Sidebar'
-
 import { toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import { newProduct, clearErrors } from '../../actions/productActions'
-
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
+
 
 
 
@@ -69,7 +64,9 @@ const NewProduct = () => {
     const dispatch = useDispatch();
 
     let navigate = useNavigate()
-
+    const goBack = () => {
+		navigate(-1);
+	}
 
 
     const { loading, error, success } = useSelector(state => state.newProduct);
@@ -185,7 +182,9 @@ const NewProduct = () => {
                 <div className="col-12 col-md-10">
 
                     <Fragment>
-
+                    <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
                         <div className="wrapper my-5 white">
 
                             <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>

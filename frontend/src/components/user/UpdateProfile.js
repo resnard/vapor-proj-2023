@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { updateProfile, loadUser, clearErrors } from '../../actions/userActions'
 
 import { UPDATE_PROFILE_RESET } from '../../constants/userConstants'
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const UpdateProfile = () => {
     const [name, setName] = useState('')
@@ -13,6 +15,9 @@ const UpdateProfile = () => {
     const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg')
     const dispatch = useDispatch();
     let navigate = useNavigate();
+	const goBack = () => {
+		navigate(-1);
+	}
     const { user } = useSelector(state => state.auth);
     const { error, isUpdated, loading } = useSelector(state => state.user)
 
@@ -58,7 +63,10 @@ const UpdateProfile = () => {
     return (
         <Fragment>
             <MetaData title={'Update Profile'} />
-            <div className="row wrapper">
+            <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
+            <div className="row wrapper white mt-n5">
 
                 <div className="col-10 col-lg-5">
 

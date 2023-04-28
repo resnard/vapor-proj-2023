@@ -221,11 +221,14 @@ const OrdersList = () => {
 
                                 data={setOrders()}
 
-                                className="table-light px-3 mx-auto"
+                                className="px-3 white"
+
                                 bordered
-                                // text-white
-                                // striped
+            
+                                striped
+            
                                 hover
+            
 
                             />
 

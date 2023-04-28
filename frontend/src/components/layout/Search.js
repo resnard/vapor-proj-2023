@@ -45,7 +45,7 @@ const Search = () => {
             // filterOptions={products.map((product) => product.name)}
         freeSolo
         id="free-solo-2-demo"
-        // disableClearable
+         disableClearable
         options={productsAll.map((options) => options.name)}
         renderInput={(params) => (
           <TextField

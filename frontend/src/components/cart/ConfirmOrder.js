@@ -3,11 +3,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import CheckoutSteps from './CheckoutSteps'
 import { useSelector } from 'react-redux'
-
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const ConfirmOrder = () => {
     const { cartItems, shippingInfo } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
     let navigate = useNavigate();
+    const goBack = () => {
+		navigate(-1);
+	}
     // Calculate Order Prices
     const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
     const shippingPrice = itemsPrice > 200 ? 0 : 25
@@ -27,6 +31,9 @@ const ConfirmOrder = () => {
     return (
         <Fragment>
             <MetaData title={'Confirm Order'} />
+            <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+    goBack()
+  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>   
             <CheckoutSteps shipping confirmOrder />
             <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-confirm bord-cont">
@@ -103,7 +110,7 @@ const ConfirmOrder = () => {
 
                 </div>
 
-            </div>
+            </div><br></br><br></br>
         </Fragment>
     )
 }
