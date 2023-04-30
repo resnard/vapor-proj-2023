@@ -34,7 +34,7 @@ const Header = () => {
 					<Search />
 				</div>
 
-				<div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
+				<div className="col-12 col-md-2 mt-2 mt-md-0 text-center">
 				
 					{user ? (
 

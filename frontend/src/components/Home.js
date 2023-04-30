@@ -169,56 +169,13 @@ const Home = () => {
 
                             {keyword ? (
                                 <Fragment>
-                                    <div className="col-6 col-md-3 mt-5 mb-5 shadow-lg gen-container white"><br></br>
-                                        <div className="px-5">
-                                            <Range
-                                                marks={{
-                                                    1: `$1`,
-                                                    1000: `$1000`
-                                                }}
-                                                min={1}
-                                                max={1000}
-                                                defaultValue={[1, 1000]}
-                                                tipFormatter={value => `$${value}`}
-                                                tipProps={{
-                                                    placement: "top",
-                                                    visible: true
-                                                }}
-                                                value={price}
-                                                onChange={price => setPrice(price)}
-                                            />
-                                            <hr className="" />
-                                            <div className="">
-                                                <h4 className="mb-3">
-                                                   Genres:
-                                                </h4>
-                                                <ul className="pl-0">
-                                                    {categories.map(category => (
-                                                        <li
-                                                            style={{
-                                                                cursor: 'pointer',
-                                                                listStyleType: 'none'
-                                                            }}
-                                                            key={category}
-                                                            
-                                                            onClick={
-                                                                () => setCategory(category)           }
-                                                        >
-                                                            {category}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
 
-                                    <div className="col-6 col-md-9">
-                                        <div className="row">
+                                 
                                             {products.map(product => (
                                                 <Product key={product._id} product={product} col={4} />
                                             ))}
-                                        </div>
-                                    </div>
+                                       
                                 </Fragment>
                             ) : (
                                 products.map(product => (
