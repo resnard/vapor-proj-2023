@@ -37,11 +37,12 @@ const Search = () => {
            navigate(`/search/${keyword}`)
         } 
     }
-
+console.log("keyword: ",keyword)
     return (
         <form onSubmit={searchHandler} >
             <div className="input-group mb-2">
             <Autocomplete
+             onChange={(event, value) => setKeyword(value)}
             // filterOptions={products.map((product) => product.name)}
         freeSolo
         id="free-solo-2-demo"
