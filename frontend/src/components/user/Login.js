@@ -8,9 +8,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { login, clearErrors } from '../../actions/userActions'
+import { GoogleLogin } from '@react-oauth/google';
 
 const Login = () => {
-
+    const responseMessage = (response) => {
+        console.log(response);
+    };
+    const errorMessage = (error) => {
+        console.log(error);
+    };
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -83,9 +89,11 @@ const Login = () => {
                                 >
                                     LOGIN
                                 </button>
-
-                                <Link to="/register" className="float-right mt-3 ">New User?</Link><br></br>
+                                <div className="d-flex justify-content-center mt-3 "> <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /></div>
+                               
+                                <Link to="/register" className="float-right mt-3  ">New User?</Link><br></br>
                             </form>
+                          
                         </div>
                     </div>
 

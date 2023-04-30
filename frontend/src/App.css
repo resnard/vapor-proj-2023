@@ -38,6 +38,7 @@ body {
 nav {
   background-color: #2E3440;
   padding: 1rem 1rem;
+  position:absolute;
 }
 
 #search_btn {
@@ -1110,5 +1111,12 @@ tr, td, th {
   background-color: white;
 }
 
+button:focus{
+  outline:0 !important;
+}
+
+.invisible{
+  display: none;
+}
 
   
