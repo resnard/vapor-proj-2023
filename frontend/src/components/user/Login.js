@@ -1,22 +1,28 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-
+import axios from 'axios'
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useDispatch, useSelector } from 'react-redux'
-import { login, clearErrors } from '../../actions/userActions'
-import { GoogleLogin } from '@react-oauth/google';
+import { login, clearErrors, glogin } from '../../actions/userActions'
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const responseMessage = (response) => {
-        console.log(response);
-    };
-    const errorMessage = (error) => {
-        console.log(error);
-    };
+
+    const { register, handleSubmit, watch, formState:{errors}} = useForm();
+    const onSubmit = data => console.log(data);
+
+    const googlelogin = useGoogleLogin({
+        onSuccess: (codeResponse) => setUser(codeResponse),
+        onError: (error) => console.log('Login Failed:', error)
+      });
+    const [ user, setUser ] = useState([]);
+    const [ profile, setProfile ] = useState([]);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -28,6 +34,27 @@ const Login = () => {
     const notify = (error = '') => toast.error(error, {
         position: toast.POSITION.BOTTOM_CENTER
     });
+
+    useEffect(
+        () => {
+            if (user) {
+                axios
+                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+                        headers: {
+                            Authorization: `Bearer ${user.access_token}`,
+                            Accept: 'application/json'
+                        }
+                    })
+                    .then((res) => {
+                        // setProfile(res.data);
+                        // console.log(res.data);
+                        dispatch(glogin(res.data))
+                    })
+                    .catch((err) => console.log(err));
+            }
+        },
+        [ user ]
+    );
     useEffect(() => {
         if (isAuthenticated && redirect === 'shipping') {
             navigate(`/${redirect}`, { replace: true })
@@ -43,8 +70,8 @@ const Login = () => {
 
     }, [dispatch, isAuthenticated, error, navigate, redirect])
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = (data, event) => {
+        event.preventDefault();
         dispatch(login(email, password))
     }
 
@@ -56,17 +83,29 @@ const Login = () => {
 
                     <div className="row wrapper white">
                         <div className="col-10 col-lg-5">
-                            <form className="shadow-lg" onSubmit={submitHandler}>
+                            <form className="shadow-lg" onSubmit={handleSubmit(submitHandler)}>
                                 <h1 className="mb-3">Login</h1>
                                 <div className="form-group">
                                     <label htmlFor="email_field">Email</label>
                                     <input
                                         type="email"
+                                        {...register("email", {
+                                            required: {
+                                              value: true,
+                                              message: "Email field cannot be empty."
+                                            }, 
+                                            pattern: {
+                                              value: /^\S+@\S+$/i,
+                                              message: "Invalid Email format!"
+                                           }
+                                          })} 
                                         id="email_field"
                                         className="form-control"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                    required/>
+                                    // required
+                                    />
+                                      {errors.email && <p className='red'><i>{errors.email.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -74,13 +113,21 @@ const Login = () => {
                                     <input
                                         type="password"
                                         id="password_field"
+                                        {...register("password", { required: "Password is required!" })}
                                         className="form-control"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                   required />
+                                //    required
+                                    />
+                                     {errors.password && <p className='red'><i>{errors.password.message}</i></p>}
                                 </div>
+                                          <div className='float-right mb-4'>
 
-                                <Link to="/password/forgot" className="float-right mb-4 ">Forgot Password?</Link>
+                                          <Link to="/password/forgot" >Forgot Password?</Link>
+                                <Link to="/register" className='mx-4'>New User?</Link><br></br>
+
+                                          </div>
+                                
 
                                 <button
                                     id="login_button"
@@ -89,9 +136,18 @@ const Login = () => {
                                 >
                                     LOGIN
                                 </button>
-                                <div className="d-flex justify-content-center mt-3 "> <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /></div>
+                                <button
+                                    id="login_button"
+                                    type="submit"
+                                    className="btn btn-block py-3"
+                                    onClick={()=>googlelogin()}
+                                >
+                                    LOG IN WITH GOOGLE
+                                </button>
+
+                                {/* <div className="d-flex justify-content-center mt-3 "> <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /></div> */}
                                
-                                <Link to="/register" className="float-right mt-3  ">New User?</Link><br></br>
+                              
                             </form>
                           
                         </div>
