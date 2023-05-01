@@ -10,14 +10,16 @@ import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId="462166371047-894rt6jnhp563vur2hen3qei3ufmpem2.apps.googleusercontent.com">
+ 
   <Provider store={store}>
+     <GoogleOAuthProvider clientId="462166371047-894rt6jnhp563vur2hen3qei3ufmpem2.apps.googleusercontent.com">
     <BrowserRouter>
       <App />
       <ToastContainer />
     </BrowserRouter>
+    </GoogleOAuthProvider>
   </Provider>
-  </GoogleOAuthProvider>
+ 
 );
 
 

@@ -2,15 +2,15 @@ MERN Project requirements
 
 
 
-machine problems 20pts use datatables and admin protected  components
+machine problems 20pts use datatables and admin protected  components (done)
 
 
 
-mp1 Node/express CRUD api
+mp1 Node/express CRUD api (done)
 
 
 
-mp2 React CRUD components for mp1
+mp2 React CRUD components for mp1 (done)
 
 
 
@@ -30,7 +30,7 @@ mp6 React CRUD components for mp5
 
 
 
-mp7 transactions CRUD api/components. only administrators can update the transaction. export PDF when the transaction is completed. React-pdf library
+mp7 transactions CRUD api/components. only administrators can update the transaction. export PDF when the transaction is completed. React-pdf library (on going)
 
 
 
@@ -40,7 +40,7 @@ quiz 1 15pts
 
 Simple validation/error messages Toast Alert and similar notifications libraries 10pts
 
-React validation for CRUD form components. you can use React-hook-form 15pts
+React validation for CRUD form components. you can use React-hook-form 15pts 
 
 
 

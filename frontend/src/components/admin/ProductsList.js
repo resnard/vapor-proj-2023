@@ -54,6 +54,16 @@ const ProductsList = () => {
                     sort: 'asc'
                 },
                 {
+                    label: 'Platform',
+                    field: 'platform',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Genre',
+                    field: 'category',
+                    sort: 'asc'
+                },
+                {
                     label: 'Price',
                     field: 'price',
                     sort: 'asc'
@@ -74,6 +84,8 @@ const ProductsList = () => {
             data.rows.push({
                 id: product._id,
                 name: product.name,
+                platform: product.platform,
+                category: product.category,
                 price: `$${product.price}`,
                 stock: product.stock,
                 actions: <Fragment>
@@ -111,10 +123,10 @@ const ProductsList = () => {
                         {loading ? <Loader /> : (
 
                             <MDBDataTable
-                            
+                           
                                 data={setProducts()}
                                 className="px-3 white"
-
+                                maxHeight='520px' maxWidth='520px'
                     bordered
 
                     striped

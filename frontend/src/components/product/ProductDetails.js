@@ -112,7 +112,7 @@ const ProductDetails = () => {
             {loading ? <Loader /> : (
                 <Fragment>
                     <MetaData title={product.name} />
-                    <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
+                    <IconButton sx={{ml: 3, mt: 1, mb: -3, zIndex: 1600}}  onClick={() => {
     goBack()
   }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
    <div class="ribbon-wrapper mt-n5">
@@ -122,7 +122,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="wrapper1 row  d-flex justify-content-around">
                    
-                        <div className="col-12 col-lg-5 img-fluid" id="product_image">
+                        <div className="col-12 col-lg-6 img-fluid mt-5" id="product_image">
                             <Carousel pause='hover'>
                                 {product.images && product.images.map(image => (
                                     <Carousel.Item key={image.public_id}>
@@ -130,13 +130,21 @@ const ProductDetails = () => {
                                     </Carousel.Item>
                                 ))}
                             </Carousel>
+                            {product.reviews && product.reviews.length > 0 && (
+
+                            <ListReviews reviews={product.reviews} />
+
+                            )}
+
                         </div>
                        
 
-                        <div className="col-12 col-lg-5 mt-5 pl-5">
+                        <div className="col-12 col-lg-4 mt-5 pl-5 mb-n5">
                             <h3>{product.name}</h3>
                             <p id="product_id">Product # {product._id}</p>
-                            <p id="product_seller mb-3">Sold by: <strong>{product.seller}</strong></p>
+                            <p id="product_seller mb-3">Platform: <strong>{product.platform}</strong></p>
+                            <p id="product_seller mb-3">Genre: <strong>{product.category}</strong></p>
+                            <p id="product_seller mb-3">Developer: <strong>{product.seller}</strong></p>
                            
                             <div className="rating-outer">
                                 <div className="rating-inner" style={{ width: `${(product.ratings / 5) * 100}%` }}></div>
@@ -223,12 +231,7 @@ const ProductDetails = () => {
                             </div>
                         </div>
                       
-
-                        {product.reviews && product.reviews.length > 0 && (
-
-                            <ListReviews reviews={product.reviews} />
-
-                        )}
+                      
                        
                     </div>
 

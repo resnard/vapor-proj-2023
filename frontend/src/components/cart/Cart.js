@@ -42,7 +42,7 @@ const Cart = () => {
 <strong class="ribbon-inner">Your Cart</strong>
 </h3>
 </div>
-            {cartItems.length === 0 ? <h2 className="mt-5">Your Cart is Empty</h2> : (
+            {cartItems.length === 0 ? goBack() : (
                 <Fragment>
                  
                     {/* <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2> */}
@@ -58,7 +58,7 @@ const Cart = () => {
                                             </div>
                                             <div className="col-5 col-lg-3">
 
-                                                <Link to={`/products/${item.product}`}>{item.name}</Link>
+                                                <Link to={`/products/${item.product}`}><strong>{item.name}</strong></Link>
                                             </div>
                                             <div className="col-4 col-lg-2 mt-4 mt-lg-0">
                                                 <p id="card_item_price">${item.price}</p>

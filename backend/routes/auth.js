@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const upload = require("../utils/multer");
 
+
 const { isAuthenticatedUser,
     authorizeRoles
 } = require('../middlewares/auth');
-const { registerUser, loginUser, logout, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser} = require('../controllers/authController');
+const { googlelogin, registerUser, loginUser, logout, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser} = require('../controllers/authController');
 router.post('/register', upload.single("avatar"),registerUser);
 router.post('/login', loginUser);
+router.post("/googlelogin", googlelogin);
 
 router.post('/password/forgot', forgotPassword);
 router.route('/password/reset/:token').put(resetPassword);

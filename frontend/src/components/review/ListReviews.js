@@ -9,8 +9,8 @@ import React from 'react'
 const ListReviews = ({ reviews }) => {
     return (
        
-        <div className="reviews w-75 ">
-            <h3>Other's Reviews:</h3>
+        <div className="reviews w-100 mt-5">
+            <h3>User Reviews:</h3>
             <hr />
             {reviews && reviews.map(review => (
                 <div class="comment mt-2 mb-2 text-justify float-left">

@@ -90,6 +90,7 @@ const UpdateProduct = () => {
         formData.set('name', name);
         formData.set('price', price);
         formData.set('description', description);
+        formData.set('platform', platform);
         formData.set('category', category);
         formData.set('stock', stock);
         formData.set('seller', seller);

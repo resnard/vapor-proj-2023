@@ -9,12 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { newProduct, clearErrors } from '../../actions/productActions'
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants'
+import { useForm } from "react-hook-form";
+
 
 
 
 
 const NewProduct = () => {
-
+    const { register, handleSubmit, watch, formState:{errors}} = useForm();
+    const onSubmit = data => console.log(data);
     const [name, setName] = useState('');
 
     const [price, setPrice] = useState(0);
@@ -35,7 +38,7 @@ const NewProduct = () => {
 
     const categories = [
 
-        'RPG',
+                'RPG',
                 'Rogue Like',
                 'Single Player',
                 'MOBA',
@@ -103,9 +106,9 @@ const NewProduct = () => {
 
 
 
-    const submitHandler = (e) => {
+    const submitHandler = (values, event) => {
 
-        e.preventDefault();
+        event.preventDefault();
 
 
 
@@ -165,6 +168,8 @@ const NewProduct = () => {
 
     }
 
+    console.log("Form caught errors: ", errors);
+
     return (
 
         <Fragment>
@@ -187,7 +192,7 @@ const NewProduct = () => {
   }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
                         <div className="wrapper my-5 white">
 
-                            <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
+                            <form className="shadow-lg" onSubmit={handleSubmit(submitHandler)} encType='multipart/form-data'>
 
                                 <h1 className="mb-4">New Game</h1>
 
@@ -201,6 +206,8 @@ const NewProduct = () => {
 
                                         type="text"
 
+                                        {...register("name", { required: "Game Title is required!" })}
+
                                         id="name_field"
 
                                         className="form-control"
@@ -208,9 +215,9 @@ const NewProduct = () => {
                                         value={name}
 
                                         onChange={(e) => setName(e.target.value)}
-                                        required
+                                        // required
 
-                                    />
+                                    /> 
 
                                 </div>
 
@@ -222,6 +229,8 @@ const NewProduct = () => {
 
                                         type="text"
 
+                                        {...register("Game Price", { required: "Game should have a price!" })}
+
                                         id="price_field"
 
                                         className="form-control"
@@ -229,7 +238,7 @@ const NewProduct = () => {
                                         value={price}
 
                                         onChange={(e) => setPrice(e.target.value)}
-                                        required
+                                        // required
 
                                     />
 
@@ -239,13 +248,21 @@ const NewProduct = () => {
 
                                     <label htmlFor="description_field">Description</label>
 
-                                    <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}  required></textarea>
+                                    <textarea className="form-control" id="description_field" rows="8" 
+                                     {...register("Game Description", { required: "Game Description is required!" })}
+                                    value={description} 
+                                    onChange={(e) => setDescription(e.target.value)}  
+                                    // required
+                                    ></textarea>
 
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="platform_field">Platform:</label>
-                                    <select className="form-control" id="platform_field" value={platform} onChange={(e) => setPlatform(e.target.value)}  required>
+                                    <select className="form-control" id="platform_field" 
+                                     {...register("Game Platform", { required: "Game Platform in required!" })} value={platform} onChange={(e) => setPlatform(e.target.value)}  
+                                    //  required
+                                     >
                                         {platforms.map(platform => (
                                             <option key={platform} value={platform} >{platform}</option>
                                         ))}
@@ -255,7 +272,10 @@ const NewProduct = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="category_field">Genre:</label>
-                                    <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}  required>
+                                    <select className="form-control" id="category_field" 
+                                     {...register("Game Genre", { required: "Genre is required!" })} value={category} onChange={(e) => setCategory(e.target.value)}  
+                                    //  required
+                                     >
                                         {categories.map(category => (
                                             <option key={category} value={category} >{category}</option>
                                         ))}
@@ -269,7 +289,7 @@ const NewProduct = () => {
                                     <input
 
                                         type="number"
-
+                                        {...register("Game Stocks", { required: "Game Stock is required!" })}    
                                         id="stock_field"
 
                                         className="form-control"
@@ -277,7 +297,7 @@ const NewProduct = () => {
                                         value={stock}
 
                                         onChange={(e) => setStock(e.target.value)}
-                                        required
+                                        // required
 
                                     />
 
@@ -292,15 +312,15 @@ const NewProduct = () => {
                                     <input
 
                                         type="text"
-
+                                        
                                         id="seller_field"
-
+                                        {...register("Game Developer", { required: "Game Developer cannot be emppty!" })}
                                         className="form-control"
 
                                         value={seller}
 
                                         onChange={(e) => setSeller(e.target.value)}
-                                        required
+                                        // required
 
                                     />
 
@@ -319,8 +339,8 @@ const NewProduct = () => {
                                         <input
 
                                             type='file'
-
-                                            name='images'
+                                            {...register("images", { required: "Game Image cannot be Null!" })}
+                                         
 
                                             className='custom-file-input'
 
@@ -330,7 +350,7 @@ const NewProduct = () => {
 
                                             multiple
 
-                                            required
+                                            // required
 
                                         />
 

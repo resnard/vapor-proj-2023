@@ -2,12 +2,14 @@ import React, { Fragment, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import MetaData from '../layout/MetaData'
 import CheckoutSteps from './CheckoutSteps'
-
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, clearErrors } from '../../actions/orderActions'
 import { clearCart } from '../../actions/cartActions';
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import OfflinePinIcon from '@mui/icons-material/OfflinePin';
 const Payment = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
@@ -34,6 +36,12 @@ const Payment = () => {
         order.taxPrice = orderInfo.taxPrice
         order.totalPrice = orderInfo.totalPrice
     }
+
+    const notify = (message = '') => toast.success(message, {
+		icon: () =>  <OfflinePinIcon color='success'/> ,
+        position: toast.POSITION.TOP_RIGHT
+    });
+
     const submitHandler = async (e) => {
         e.preventDefault();
         document.querySelector('#pay_btn').disabled = true;
@@ -43,7 +51,8 @@ const Payment = () => {
         }
         dispatch(createOrder(order))
         dispatch(clearCart())
-        navigate('/success')
+        notify('Order Payment Success.')
+        navigate('/')
     }
     return (
         <Fragment>

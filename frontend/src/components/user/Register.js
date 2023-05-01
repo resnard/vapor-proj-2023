@@ -4,9 +4,13 @@ import MetaData from '../layout/MetaData'
 
 // import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { register, clearErrors } from '../../actions/userActions'
+import { registeruser, clearErrors } from '../../actions/userActions'
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+
+    const { register, handleSubmit, watch, formState:{errors}} = useForm();
+    const onSubmit = data => console.log(data);
 
     const [user, setUser] = useState({
         name: '',
@@ -38,8 +42,8 @@ const Register = () => {
 
     }, [dispatch, isAuthenticated, error, navigate])
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = (data, event) => {
+        event.preventDefault();
 
         const formData = new FormData();
         formData.set('name', name);
@@ -47,7 +51,7 @@ const Register = () => {
         formData.set('password', password);
         formData.set('avatar', avatar);
 
-        dispatch(register(formData))
+        dispatch(registeruser(formData))
     }
 
     const onChange = e => {
@@ -74,9 +78,9 @@ const Register = () => {
 
             <MetaData title={'Register User'} />
 
-            <div className="row wrapper">
+            <div className="row wrapper white">
                 <div className="col-10 col-lg-5">
-                    <form className="shadow-lg" onSubmit={submitHandler} encType='multipart/form-data'>
+                    <form className="shadow-lg" onSubmit={handleSubmit(submitHandler)} encType='multipart/form-data'>
                         <h1 className="mb-3">Register</h1>
 
                         <div className="form-group">
@@ -85,11 +89,12 @@ const Register = () => {
                                 type="name"
                                 id="name_field"
                                 className="form-control"
-                                name='name'
+                                {...register("name", { required: "name is required!" })}
                                 value={name}
                                 onChange={onChange}
-                                required
+                                // required
                             />
+                               {errors.name && <p className='red'><i>{errors.name.message}</i></p>}
                         </div>
 
                         <div className="form-group">
@@ -98,11 +103,21 @@ const Register = () => {
                                 type="email"
                                 id="email_field"
                                 className="form-control"
-                                name='email'
+                                {...register("email", {
+                                    required: {
+                                      value: true,
+                                      message: "Email field cannot be empty."
+                                    }, 
+                                    pattern: {
+                                      value: /^\S+@\S+$/i,
+                                      message: "Invalid Email format!"
+                                   }
+                                  })} 
                                 value={email}
                                 onChange={onChange}
-                                required
+                                // required
                             />
+                              {errors.email && <p className='red'><i>{errors.email.message}</i></p>}
                         </div>
 
                         <div className="form-group">
@@ -111,11 +126,19 @@ const Register = () => {
                                 type="password"
                                 id="password_field"
                                 className="form-control"
-                                name='password'
+                                {...register("password", 
+                                { required: { 
+                                    value: true,
+                                    message:"Password is required!" },
+                                minLength: {
+                                    value: 8,
+                                    message: "Password is too short! Minimum of 8 characters allowed."
+                                } })}
                                 value={password}
                                 onChange={onChange}
-                                required
+                                // required
                             />
+                              {errors.password && <p className='red'><i>{errors.password.message}</i></p>}
                         </div>
 
                         <div className='form-group'>
@@ -133,16 +156,17 @@ const Register = () => {
                                 <div className='custom-file'>
                                     <input
                                         type='file'
-                                        name='avatar'
+                                        {...register("avatar", { required: "Avatar is required!" })}
                                         className='custom-file-input'
                                         id='customFile'
                                         accept="images/*"
                                         onChange={onChange}
-                                        required
+                                        // required
                                     />
                                     <label className='custom-file-label' htmlFor='customFile'>
                                         Choose Avatar
                                     </label>
+                                    {errors.avatar && <p className='red'><i>{errors.avatar.message}</i></p>}
                                 </div>
                             </div>
                         </div>

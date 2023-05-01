@@ -3,6 +3,9 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
+    GOOGLE_LOGIN_REQUEST,
+    GOOGLE_LOGIN_SUCCESS,
+    GOOGLE_LOGIN_FAIL,
     REGISTER_USER_REQUEST,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_FAIL,
@@ -44,6 +47,47 @@ import {
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+export const glogin = (response) => async (dispatch) => {
+    console.log(response);
+    try {
+      dispatch({ type: GOOGLE_LOGIN_REQUEST });
+  
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Access-Control-Allow-Credentials": true,
+      //     "withCredentials": true,
+      //   },
+      // };
+  
+      // const cookies = new Cookies();
+  
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/googlelogin`,
+        { response},
+       {withCredentials:true}
+      );
+  
+      console.log(data)
+      // cookies.set('token', data.token, { path: '/' });
+      // cookies.set('userid', data.user._id, { path: '/' });
+      
+  
+      localStorage.setItem("user",JSON.stringify(data.user));
+      dispatch({
+        type:  GOOGLE_LOGIN_SUCCESS,
+  
+        payload: data.user,
+  
+      });
+    } catch (error) {
+      dispatch({
+        type:  GOOGLE_LOGIN_FAIL,
+  
+        payload: error.response.data.errMessage,
+      });
+    }
+  }
+
 export const login = (email, password) => async (dispatch) => {
     const notify = (error) => toast.error(error, {
         position: toast.POSITION.BOTTOM_CENTER
@@ -72,7 +116,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
-export const register = (userData) => async (dispatch) => {
+export const registeruser = (userData) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
         const config = {

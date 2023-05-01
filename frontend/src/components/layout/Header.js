@@ -7,6 +7,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Tooltip, IconButton, Badge} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { grey } from '@mui/material/colors';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 
 
 import { logout } from '../../actions/userActions'
@@ -18,6 +21,11 @@ const Header = () => {
 	const logoutHandler = () => {
 		dispatch(logout());
 	}
+
+	const notify = (message = '') => toast.info(message, {
+		icon: () =>  <ProductionQuantityLimitsIcon color='primary'/> ,
+        position: toast.POSITION.TOP_RIGHT
+    });
 
 	return (
 		<Fragment>
@@ -87,9 +95,18 @@ const Header = () => {
 							</div>
 
 						</div>
-						<Tooltip placement="top" title="view cart" arrow><Link to="/cart" className="float-right d-inline mr-3 mt-2">
+						
+						<Tooltip placement="top" title="view cart" arrow>
+						{cartItems.length === 0 ?
+						<ShoppingCartIcon className="float-right d-inline mr-3 mt-2" onClick={()=>notify('Your cart is empty.')} sx={{ color: grey[50], fontSize: 30 }} />   
+						// <ToastContainer limit={3} /> 
+						: (  
+							<Link to="/cart" className="float-right d-inline mr-3 mt-2">
 								<Badge badgeContent={cartItems.length} color="info"><ShoppingCartIcon sx={{ color: grey[50], fontSize: 30 }} />  </Badge>
-							</Link></Tooltip></>
+							</Link>  )}
+							
+							
+							</Tooltip></>
 
 					) : !loading && <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
 						

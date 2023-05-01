@@ -6,6 +6,40 @@ const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto')
 const cloudinary = require('cloudinary').v2
 
+exports.googlelogin = async (req, res, next) => {
+
+    console.log(req.body.response);
+    const userfind = await User.findOne({ googleId :req.body.response.id })
+    if (!userfind) {
+  
+      let createuser = await User.create({
+        name: req.body.response.name ,
+    
+        email: req.body.response.email,
+    
+        password: 'password',
+    
+        avatar: {
+          public_id: 'avatars/rjeu182thkednbnlitqc',
+    
+          url: req.body.response.picture,
+        },
+        googleId :req.body.response.id
+      });
+  
+      var user = await User.findOne({ googleId :createuser.googleId })
+       sendToken(user, 200, res);
+        
+      }
+  
+      else
+      {
+  
+        const user = await User.findOne({ googleId :req.body.response.id })
+        sendToken(user, 200, res);
+  
+      }}
+
 exports.registerUser = async (req, res, next) => {
     const result = await cloudinary.uploader.upload(req.body.avatar, {
         folder: 'avatars',
