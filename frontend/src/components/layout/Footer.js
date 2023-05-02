@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 const Footer = () => {
     return (
         <Fragment>
-            <footer class="site-footer">
+            <footer class="site-footer mt-n0">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-6">
@@ -12,14 +12,14 @@ const Footer = () => {
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
+            <h6>Platforms</h6>
             <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+              <li><a href="#">React JS</a></li>
+              <li><a href="#">Javascript</a></li>
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">Mongo DB</a></li>
+              <li><a href="#">Cloudinary</a></li>
             </ul>
           </div>
 

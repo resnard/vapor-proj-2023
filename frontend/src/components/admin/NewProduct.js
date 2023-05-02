@@ -104,9 +104,11 @@ const NewProduct = () => {
 
     }, [dispatch, error, success,navigate])
 
+    const notify = (error = '') => toast.error(error, {
+        position: toast.POSITION.BOTTOM_CENTER
+    });
 
-
-    const submitHandler = (values, event) => {
+    const submitHandler = (data, event) => {
 
         event.preventDefault();
 
@@ -133,8 +135,12 @@ const NewProduct = () => {
             formData.append('images', image)
 
         })
-
-        dispatch(newProduct(formData))
+        try {
+            dispatch(newProduct(formData))
+            } catch (e) {
+           notify(e)
+            }
+       
 
     }
 
@@ -218,7 +224,7 @@ const NewProduct = () => {
                                         // required
 
                                     /> 
-
+{errors.name && <p className='red'><i>{errors.name.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -229,7 +235,9 @@ const NewProduct = () => {
 
                                         type="text"
 
-                                        {...register("Game Price", { required: "Game should have a price!" })}
+                                        {...register("price", { required: true, message: "Game should have a price!", min: {
+                                            value: 1,
+                                            message: "Price cannot be zero."} })}
 
                                         id="price_field"
 
@@ -241,7 +249,7 @@ const NewProduct = () => {
                                         // required
 
                                     />
-
+{errors.price && <p className='red'><i>{errors.price.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -249,37 +257,40 @@ const NewProduct = () => {
                                     <label htmlFor="description_field">Description</label>
 
                                     <textarea className="form-control" id="description_field" rows="8" 
-                                     {...register("Game Description", { required: "Game Description is required!" })}
+                                     {...register("description", { required: "Game Description is required!" })}
                                     value={description} 
                                     onChange={(e) => setDescription(e.target.value)}  
                                     // required
                                     ></textarea>
-
+{errors.description && <p className='red'><i>{errors.description.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="platform_field">Platform:</label>
                                     <select className="form-control" id="platform_field" 
-                                     {...register("Game Platform", { required: "Game Platform in required!" })} value={platform} onChange={(e) => setPlatform(e.target.value)}  
+                                     {...register("platform", { required: "Game Platform in required!" })} value={platform} onChange={(e) => setPlatform(e.target.value)}  
                                     //  required
                                      >
                                         {platforms.map(platform => (
                                             <option key={platform} value={platform} >{platform}</option>
                                         ))}
+                                       <option value="" selected disabled>Please select an option...</option>
                                     </select>
+                                    {errors.platform && <p className='red'><i>{errors.platform.message}</i></p>}
                                 </div>
 
 
                                 <div className="form-group">
                                     <label htmlFor="category_field">Genre:</label>
                                     <select className="form-control" id="category_field" 
-                                     {...register("Game Genre", { required: "Genre is required!" })} value={category} onChange={(e) => setCategory(e.target.value)}  
+                                     {...register("genre", { required: "Genre is required!" })} value={category} onChange={(e) => setCategory(e.target.value)}  
                                     //  required
-                                     >
+                                     > <option value="" selected disabled>Please select an option...</option>
                                         {categories.map(category => (
                                             <option key={category} value={category} >{category}</option>
                                         ))}
                                     </select>
+                                    {errors.genre && <p className='red'><i>{errors.genre.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -289,7 +300,7 @@ const NewProduct = () => {
                                     <input
 
                                         type="number"
-                                        {...register("Game Stocks", { required: "Game Stock is required!" })}    
+                                        {...register("stocks", { required: {value: true, message: "Game Stock is required!"}, min: {value: 1, message: "Game must have atleast one stock."} })}    
                                         id="stock_field"
 
                                         className="form-control"
@@ -300,7 +311,7 @@ const NewProduct = () => {
                                         // required
 
                                     />
-
+{errors.stocks && <p className='red'><i>{errors.stocks.message}</i></p>}
                                 </div>
 
 
@@ -314,7 +325,7 @@ const NewProduct = () => {
                                         type="text"
                                         
                                         id="seller_field"
-                                        {...register("Game Developer", { required: "Game Developer cannot be emppty!" })}
+                                        {...register("developer", { required: "Game Developer cannot be empty!" })}
                                         className="form-control"
 
                                         value={seller}
@@ -323,7 +334,7 @@ const NewProduct = () => {
                                         // required
 
                                     />
-
+{errors.developer && <p className='red'><i>{errors.developer.message}</i></p>}
                                 </div>
 
 
@@ -359,7 +370,7 @@ const NewProduct = () => {
                                             Choose Images
 
                                      </label>
-
+                                     {errors.images && <p className='red'><i>{errors.images.message}</i></p>}
                                     </div>
 
 

@@ -167,7 +167,10 @@ export const logout = () => async (dispatch) => {
             },
             withCredentials: true,
         }
+        
         await axios.get(`${process.env.REACT_APP_API}/api/v1/logout`,config)
+        sessionStorage.clear();
+    localStorage.clear();
         dispatch({
             type: LOGOUT_SUCCESS,
         })

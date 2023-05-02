@@ -107,7 +107,9 @@ const Profile = () => {
          <p>Likes</p>
          <p>1,976</p>
       </div> */}
+      
    </div>
+  
    <div class="pCard_back">
       <p>See My Latest Work Here</p>
       <a href="#"><i class="fa fa-facebook fa-2x fa-fw"></i></a>

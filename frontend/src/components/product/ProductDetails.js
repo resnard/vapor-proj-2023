@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import ListReviews from '../review/ListReviews';
-
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductDetails, clearErrors, newReview } from '../../actions/productActions'
@@ -34,6 +34,11 @@ const ProductDetails = () => {
 
     const notify = (error = '') => toast.error(error, {
         position: toast.POSITION.BOTTOM_CENTER
+    });
+
+    const notifyCA = (message = '') => toast.success(message, {
+		icon: () =>  <AddShoppingCartIcon color='success'/> ,
+        position: toast.POSITION.TOP_LEFT
     });
     const successMsg = (message = '') => toast.success(message, {
         position: toast.POSITION.BOTTOM_CENTER
@@ -65,7 +70,9 @@ const ProductDetails = () => {
         setQuantity(qty)
     }
     const addToCart = () => {
+       
         dispatch(addItemToCart(id, quantity));
+        // notifyCA('Added to cart successfully.')
         // alert.success('Item Added to Cart')
     }
     function setUserRatings() {

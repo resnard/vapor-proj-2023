@@ -9,10 +9,14 @@ import { updateUser, getUserDetails, clearErrors } from '../../actions/userActio
 import { UPDATE_USER_RESET } from '../../constants/userConstants'
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useForm } from "react-hook-form";
 
 
 
 const UpdateUser = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
+
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -20,11 +24,11 @@ const UpdateUser = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
     const goBack = () => {
-		navigate(-1);
-	}
+        navigate(-1);
+    }
     const { error, isUpdated } = useSelector(state => state.user);
     const { user } = useSelector(state => state.userDetails)
-    const {id} = useParams();
+    const { id } = useParams();
 
     const errMsg = (message = '') => toast.error(message, {
 
@@ -70,7 +74,7 @@ const UpdateUser = () => {
 
         if (isUpdated) {
 
-           successMsg('User updated successfully')
+            successMsg('User updated successfully')
 
             navigate('/admin/users')
 
@@ -86,7 +90,7 @@ const UpdateUser = () => {
 
 
 
-    const submitHandler = (e) => {
+    const submitHandler = (data, e) => {
 
         e.preventDefault();
 
@@ -107,7 +111,7 @@ const UpdateUser = () => {
         <Fragment>
 
             <MetaData title={`Update User`} />
-          
+
 
             <div className="row">
 
@@ -118,15 +122,14 @@ const UpdateUser = () => {
                 </div>
 
                 <div className="col-12 col-md-10 white">
-                <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
-    goBack()
-  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
+                    <IconButton sx={{ ml: 3, my: 1 }} onClick={() => {
+                        goBack()
+                    }}><ArrowBackIcon sx={{ fontSize: 35, color: '#fff' }}></ArrowBackIcon></IconButton>
                     <div className="row wrapper">
 
                         <div className="col-10 col-lg-5">
 
-                            <form className="shadow-lg" onSubmit={submitHandler}>
-
+                            <form className="shadow-lg" onSubmit={handleSubmit(submitHandler)}>
                                 <h1 className="mt-2 mb-5">Update User</h1>
 
                                 <div className="form-group">
@@ -137,18 +140,23 @@ const UpdateUser = () => {
 
                                         type="name"
 
+                                        {...register("name", {
+                                            required: {
+                                                value: true,
+                                                message: "Name field cannot be empty."
+                                            }
+                                        })}
+
                                         id="name_field"
 
                                         className="form-control"
 
-                                        name='name'
-
                                         value={name}
 
                                         onChange={(e) => setName(e.target.value)}
-                                        required
+                                    // required
                                     />
-
+                                    {errors.name && <p className='red'><i>{errors.name.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -159,18 +167,28 @@ const UpdateUser = () => {
 
                                         type="email"
 
+                                        {...register("email", {
+                                            required: {
+                                                value: true,
+                                                message: "Email field cannot be empty."
+                                            },
+                                            pattern: {
+                                                value: /^\S+@\S+$/i,
+                                                message: "Invalid Email format!"
+                                            }
+                                        })}
+
+
                                         id="email_field"
 
                                         className="form-control"
-
-                                        name='email'
 
                                         value={email}
 
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
                                     />
-
+                                    {errors.email && <p className='red'><i>{errors.email.message}</i></p>}
                                 </div>
 
                                 <div className="form-group">
@@ -179,11 +197,17 @@ const UpdateUser = () => {
 
                                     <select
 
+
+                                        {...register("role", {
+                                            required: {
+                                                value: true,
+                                                message: "Role field cannot be empty."
+                                            }
+                                        })}
+
                                         id="role_field"
 
                                         className="form-control"
-
-                                        name='role'
 
                                         value={role}
 
@@ -200,7 +224,7 @@ const UpdateUser = () => {
                                         <option value="admin">admin</option>
 
                                     </select>
-
+                                    {errors.role && <p className='red'><i>{errors.role.message}</i></p>}
                                 </div>
 
                                 <button type="submit" className="btn update-btn btn-block mt-4 mb-3" >Update</button>

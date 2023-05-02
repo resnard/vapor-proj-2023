@@ -31,6 +31,9 @@ import ProcessOrder from './components/admin/ProcessOrder'
 import UsersList from './components/admin/UsersList'
 import UpdateUser from './components/admin/UpdateUser'
 import ProductReviews from './components/admin/ProductReviews'
+import NewAnnouncement from './components/admin/NewAnnouncement'
+import AnnouncementList from './components/admin/AnnouncementList'
+import updateAnnouncement from './components/admin/UpdateAnnouncements'
 
 import { loadUser } from './actions/userActions'
 import { useSelector } from 'react-redux'
@@ -206,10 +209,45 @@ function App() {
           }
 
         />
+
+<Route
+          path="/admin/announcement"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <AnnouncementList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+
+          path="/admin/announcement/new"
+
+          element={
+
+            <ProtectedRoute isAdmin={true} >
+
+              <NewAnnouncement />
+
+            </ProtectedRoute>
+
+          }
+
+        />
+        <Route
+          path="/admin/announcement/:id"
+          element={
+            <ProtectedRoute isAdmin={true} >
+              <updateAnnouncement />
+            </ProtectedRoute>
+
+          }
+
+        />
       </Routes>
-      {!loading && (!isAuthenticated || user.role !== 'admin') && (
+      <Footer />
+      {/* {!loading && (!isAuthenticated || user.role !== 'admin') && (
         <Footer />
-      )}
+      )} */}
     </div>
   );
 }

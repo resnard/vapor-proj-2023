@@ -4,12 +4,16 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 
 import { productsReducer, productDetailsReducer, newReviewReducer, newProductReducer, productReducer, productReviewsReducer, reviewReducer } from './reducers/productReducers'
+import { announcementsReducer, newAnnouncementReducer, announcementReducer } from './reducers/announcementReducers'
 import { authReducer, userReducer, forgotPasswordReducer, allUsersReducer, userDetailsReducer, customerSalesReducer, } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducers'
 import { newOrderReducer, myOrdersReducer, orderDetailsReducer, allOrdersReducer, orderReducer,  } from './reducers/orderReducers'
 import { salesPerMonthReducer, productSalesReducer } from './reducers/chartReducers';
 const reducer = combineReducers({
     products: productsReducer,
+    allannouncements: announcementsReducer,
+    newannouncements: newAnnouncementReducer,
+    announcements: announcementReducer,
     productDetails: productDetailsReducer,
     auth: authReducer,
     user: userReducer,

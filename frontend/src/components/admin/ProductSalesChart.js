@@ -2,6 +2,14 @@ import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer, Cell } from 'recha
 
 export default function ProductSalesChart({ data }) {
     const pieColors =[
+        '#88C0D0',
+        '#5E81AC',
+        '#81C7D4',
+        '#BF616A',
+        '#D08770',
+        '#EBCB8B',
+        '#A3BE8C',
+        '#B48EAD',
         "#FF6633",
         "#FFB399",
         "#FF33FF",
@@ -20,7 +28,9 @@ export default function ProductSalesChart({ data }) {
         "#4D80CC",
         "#FF4D4D",
         "#99E6E6",
-        "#6666FF"
+        "#6666FF",
+        '#81A1C1',
+ 
     ]
     // console.log(data)
     
@@ -37,7 +47,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
     return (
-        <ResponsiveContainer width="80%" height={500}>
+        <ResponsiveContainer width="90%" height={500} className='wrapper1'>
             <PieChart >
             {/* <Pie data={data} dataKey="percent" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" /> */}
                 <Pie

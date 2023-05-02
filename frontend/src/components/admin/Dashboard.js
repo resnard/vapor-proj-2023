@@ -157,16 +157,25 @@ const Dashboard = () => {
 
                                 </div>
 
-                            </div>
-                            <span>Customer Sales Chart:</span>
+                            </div><hr></hr>
+                            <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">TOP CUSTOMERS:</strong>
+</h3>
+</div>
                             <Fragment>
                                 <UserSalesChart data={customerSales} />
                             </Fragment>
-                            <span>Monthly Sales Chart:</span>
+                            <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">MONTHLY SALES: </strong>
+</h3>
+</div>
                             <Fragment>
                                 <MonthlySalesChart data={salesPerMonth} />
-                            </Fragment>
-                            <span>Product Sales Chart:</span>
+                            </Fragment><hr></hr>
+                            <div class="ribbon-wrapper"> <h3 class="ribbon">
+<strong class="ribbon-inner">BEST SELLING PRODUCTS:</strong>
+</h3>
+</div>
                             <Fragment>
                                 <ProductSalesChart data={productSales} />
                             </Fragment>
@@ -176,7 +185,7 @@ const Dashboard = () => {
 
                     )}
                 </div>
-
+               
             </div>
 
         </Fragment >

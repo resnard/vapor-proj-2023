@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, clearErrors, glogin } from '../../actions/userActions'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import { useForm } from "react-hook-form";
+import GoogleIcon from '@mui/icons-material/Google';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Login = () => {
 
@@ -33,6 +35,11 @@ const Login = () => {
     const redirect = new URLSearchParams(location.search).get('redirect')
     const notify = (error = '') => toast.error(error, {
         position: toast.POSITION.BOTTOM_CENTER
+    });
+
+    const notifySuccess = (message) => toast.success(message, {
+        icon: () =>  <AccountCircleIcon color='success'/> ,
+        position: toast.POSITION.TOP_LEFT
     });
 
     useEffect(
@@ -60,7 +67,9 @@ const Login = () => {
             navigate(`/${redirect}`, { replace: true })
         }
         else if (isAuthenticated)
+       
             navigate('/')
+         
         if (error) {
             // alert.error(error);
             console.log(error)
@@ -72,7 +81,9 @@ const Login = () => {
 
     const submitHandler = (data, event) => {
         event.preventDefault();
+      
         dispatch(login(email, password))
+        notifySuccess('Logged In Successfully.')
     }
 
     return (
@@ -142,7 +153,7 @@ const Login = () => {
                                     className="btn btn-block py-3"
                                     onClick={()=>googlelogin()}
                                 >
-                                    LOG IN WITH GOOGLE
+                                    <GoogleIcon sx={{color: '#FFF', mr: 2}}/>LOG IN WITH GOOGLE
                                 </button>
 
                                 {/* <div className="d-flex justify-content-center mt-3 "> <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /></div> */}

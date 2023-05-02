@@ -132,7 +132,7 @@ nav {
 
 /* Footer */
 footer {
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   color: grey;
   bottom: 0;
   width: 100%;
@@ -219,7 +219,7 @@ footer {
   height: 80px;
   padding-left: 0;
 }
-.loader:after {
+/* .loader:after {
   content: ' ';
   display: block;
   width: 64px;
@@ -227,7 +227,7 @@ footer {
   margin: 8px;
   border-radius: 50%;
   border: 6px solid #88c0d0;
-  /*fa9c23 - 88c0d0 */
+  fa9c23 - 88c0d0
   border-color: #88c0d0 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
@@ -238,7 +238,7 @@ footer {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* Cart */
 
@@ -531,6 +531,8 @@ footer {
 #sidebar {
   min-width: 100%;
   max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
   background: #2e3440;
   color: #fff;
   transition: all 0.3s;
@@ -1284,5 +1286,227 @@ button:focus{
     font-weight:600
   }
 }
+
+/* fire animation */
+@keyframes scaleUpDown {
+  0%,
+  100% {
+    transform: scaleY(1.1) scaleX(1.1);
+  }
+  50%,
+  90% {
+    transform: scaleY(1.1);
+  }
+  75% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: skewX(0) scale(1);
+  }
+  50% {
+    transform: skewX(5deg) scale(0.9);
+  }
+}
+
+@keyframes particleUp {
+  0% {
+    opacity: 1;
+    /* right: -5%; */
+    
+  }
+  50% {
+    opacity: 0.80;
+    transform: scale(0.5);
+    
+  }
+  80% {
+    opacity: 0.1;
+   
+  }
+  100% {
+    opacity: 0;
+    top: -100%;
+    /* left: -5%; */
+    /* left: -30%; */
+    transform: scale(5);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    background-color: #E5E9F0;
+  }
+  50% {
+    background-color: #ECEFF4
+    ;
+  }
+}
+
+.fire {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fire-center {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: scaleUpDown 1s ease-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      farthest-corner at 10px 0,
+      #D8DEE9 0%,
+      #E5E9F0 95%
+    );
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #D8DEE9);
+  }
+
+  .particle-fire {
+    position: absolute;
+    margin-right: 3px;
+    top: 100%;
+    left: 43%;
+    width: 20px;
+    height: 20px;
+    background-color: #E5E9F0;
+    /* transform: rotate(90deg); */
+    border-radius: 50%;
+    /* left: -50px;
+    top: 50px;
+    width: 0;
+    height: 0; */
+    border:  solid transparent;
+    /* transform: rotate(45deg); */
+    filter: drop-shadow(0 0 10px #D8DEE9);
+    animation: particleUp 2s ease-out 0;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-right {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  animation: shake 1s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    top: 15%;
+    right: -25%;
+    width: 80%;
+    height: 80%;
+    background-color: #E5E9F0;
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #D8DEE9);
+  }
+
+  .particle-fire {
+    position: absolute;
+    /* margin-right: 3px; */
+    top: 100%;
+    left: 70%;
+    width: 15px;
+    height: 15px;
+    background-color: #E5E9F0;
+    /* transform: scaleX(1) rotate(90deg); */
+    border-radius: 50%;
+    /* left: -50px;
+    top: 50px;
+    width: 0;
+    height: 0; */
+    border: solid transparent;
+    /* transform: rotate(45); */
+    /* border-top: solid; */
+    filter: drop-shadow(0 0 10px #D8DEE9);
+    animation: particleUp 2s ease-out 0;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-left {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: shake 1s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    top: 15%;
+    left: -20%;
+    width: 80%;
+    height: 80%;
+    background-color: #E5E9F0;
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #D8DEE9);
+  }
+
+  .particle-fire {
+    position: absolute;
+    margin-right: 3px;
+    top: 100%;
+    left: 30%;
+    width: 15px;
+    height: 15px;
+    background-color: #E5E9F0;
+    transform: rotate(90deg);
+    border-radius: 50%;
+    /* left: -50px;
+    top: 50px;
+    width: 0;
+    height: 0; */
+    border:  solid transparent;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 10px #D8DEE9);
+    animation: particleUp 2s ease-out 0;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-bottom .main-fire {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 75%;
+  height: 75%;
+  background-color: #ECEFF4;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 100% 40%;
+  filter: blur(10px);
+  animation: glow 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
 
   

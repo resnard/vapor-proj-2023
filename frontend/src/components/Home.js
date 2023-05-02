@@ -22,8 +22,9 @@ const Home = () => {
     const dispatch = useDispatch();
     const { loading, products, error, productsCount, resPerPage, filteredProductsCount } = useSelector(state => state.products); 
     const [currentPage, setCurrentPage] = useState(1)
-    const [price, setPrice] = useState([1,1000])
+    const [price, setPrice] = useState([1,99999])
     const [category, setCategory] = useState('');
+    
     let { keyword } = useParams()
 //pop over
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -72,6 +73,8 @@ const Home = () => {
         dispatch(getProducts(keyword, currentPage, price, category))
     }, [dispatch, error, currentPage, keyword, price, category]);
 
+     const tTip = category ? "Genre: " + category : "Filter Games" 
+   
     function setCurrentPageNo(pageNumber) {
         setCurrentPage(pageNumber)
     }
@@ -82,12 +85,13 @@ const Home = () => {
     }
     console.log(keyword, count, filteredProductsCount, resPerPage)
     console.log("Site products:", products, category, price)
+
     return (
         <Fragment>
             {loading ? <Loader /> : (
                 <Fragment>
                     <MetaData title={'Buy Best Games Online'} />
-                    <Tooltip title="Filter Games" placement="right" arrow>
+                    <Tooltip title={tTip} placement="right" arrow>
                     <Fab aria-describedby={id} onClick={handleClick} sx={{color: '#2E3440',backgroundColor: '#2E3440',position: "relative", "&:hover": { backgroundColor: "transparent"}, zIndex: 2, mx: 1.5, mt: 1.5, mb: -5}}>
         <FilterAltIcon sx={{color: '#FFF'}}/>
       </Fab></Tooltip>
@@ -154,6 +158,7 @@ const Home = () => {
                                         </div>
                                     </div>
       </Popover>
+    
                     <div class="ribbon-wrapper">
                     <h3 class="ribbon">
                     <strong class="ribbon-inner">Our Latest Games</strong>

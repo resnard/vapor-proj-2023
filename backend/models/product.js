@@ -40,7 +40,7 @@ const productSchema = new mongoose.Schema({
             values: [
                 'PC',
                 'X-BOX',
-                'Play Station',
+                'PlayStation',
                 'PC & Console',
             ],
             message: 'Please select correct platform for game'

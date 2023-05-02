@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { addItemToCart } from '../../actions/cartActions'
 import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -28,13 +28,23 @@ const Product = ({ product }) => {
 		icon: () =>  <AddShoppingCartIcon color='success'/> ,
         position: toast.POSITION.TOP_LEFT
     });
-    
+    const notifye = (message = '') => toast.error(message, {
+		// icon: () =>  <AddShoppingCartIcon color='success'/> ,
+        position: toast.POSITION.TOP_LEFT
+    });
+    const { user } = useSelector(state => state.auth)
     const addToCart = (id) => {
-        notify('Added to cart successfully.')
-        dispatch(addItemToCart(id, 1));
-        // alert.success('Item Added to Cart')
+        if(user){
+            notify('Added to cart successfully.')
+            dispatch(addItemToCart(id, 1))
+        }else{
+            notifye('Log in to add items to cart.')
+        }
+      
+        
+        // alert.ssuccess('Item Added to Cart')
     }
-
+console.log(product.length)
     return (
         <div className="col-sm-12 col-md-6 col-lg-3 my-3">
 
@@ -47,7 +57,7 @@ const Product = ({ product }) => {
                     </div>
 
                 <div className="p-3 rounded">
-                <Link to={`/product/${product._id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                {/* <Link to={`/product/${product._id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}> */}
                     <img
                         className="card-img-top mx-auto d-flex"
                         src={product.images[0].url}
@@ -74,7 +84,7 @@ const Product = ({ product }) => {
                         {/* </BrowserRouter> */}
 
                     </div>
-                    </Link>
+                    {/* </Link> */}
                 </div>
                             <div className='  mt-n3  mb-5 d-flex justify-content-center'>
                             <Button variant="contained" sx={{ backgroundColor: '#434C5E', "&:hover": { backgroundColor: '#5e81ac', color: "#FFF" }, zIndex: 1600 }} onClick={() => addToCart(product._id)}><AddShoppingCartIcon sx={{color: '#FFF', mr: 3}}/>  Add To Cart</Button></div>

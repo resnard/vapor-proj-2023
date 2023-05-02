@@ -10,12 +10,16 @@ import { clearCart } from '../../actions/cartActions';
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import OfflinePinIcon from '@mui/icons-material/OfflinePin';
+import { useForm } from "react-hook-form";
+
 const Payment = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
     const dispatch = useDispatch();
     let navigate = useNavigate();
     const goBack = () => {
-		navigate(-1);
-	}
+        navigate(-1);
+    }
     const { user } = useSelector(state => state.auth)
     const { cartItems, shippingInfo } = useSelector(state => state.cart);
     const { error } = useSelector(state => state.newOrder)
@@ -24,7 +28,7 @@ const Payment = () => {
             dispatch(clearErrors())
         }
 
-   }, [dispatch, error])
+    }, [dispatch, error])
     const order = {
         orderItems: cartItems,
         shippingInfo
@@ -38,11 +42,11 @@ const Payment = () => {
     }
 
     const notify = (message = '') => toast.success(message, {
-		icon: () =>  <OfflinePinIcon color='success'/> ,
+        icon: () => <OfflinePinIcon color='success' />,
         position: toast.POSITION.TOP_RIGHT
     });
 
-    const submitHandler = async (e) => {
+    const submitHandler = async (data, e) => {
         e.preventDefault();
         document.querySelector('#pay_btn').disabled = true;
         order.paymentInfo = {
@@ -52,18 +56,18 @@ const Payment = () => {
         dispatch(createOrder(order))
         dispatch(clearCart())
         notify('Order Payment Success.')
-        navigate('/')
+        navigate('/success')
     }
     return (
         <Fragment>
             <MetaData title={'Payment'} />
-            <IconButton sx={{ml: 3, my: 1}}  onClick={() => {
-    goBack()
-  }}><ArrowBackIcon sx={{fontSize: 35, color: '#fff'}}></ArrowBackIcon></IconButton>
+            <IconButton sx={{ ml: 3, my: 1 }} onClick={() => {
+                goBack()
+            }}><ArrowBackIcon sx={{ fontSize: 35, color: '#fff' }}></ArrowBackIcon></IconButton>
             <CheckoutSteps shipping confirmOrder payment />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
-                    <form className="shadow-lg white" onSubmit={submitHandler}>
+                    <form className="shadow-lg white" onSubmit={handleSubmit(submitHandler)}>
                         <h1 className="mb-4">Card Info</h1>
                         <div className="form-group">
                             <label htmlFor="card_num_field">Card Number</label>
@@ -72,16 +76,24 @@ const Payment = () => {
 
                                 type="number"
 
+                                {...register("number", {
+                                    required: {
+                                        value: true,
+                                        message: "Required"
+                                    }
+                                })}
+
+
                                 id="card_num_field"
 
                                 className="form-control"
 
-                                required
+                            // required
 
 
 
                             />
-
+                            {errors.number && <p className='red'><i>{errors.number.message}</i></p>}
                         </div>
 
 
@@ -94,16 +106,24 @@ const Payment = () => {
 
                                 type="text"
 
+
+                                {...register("exp", {
+                                    required: {
+                                        value: true,
+                                        message: "Required!"
+                                    }
+                                })}
+
                                 id="card_exp_field"
 
                                 className="form-control"
 
-                                required
+                            // required
 
 
 
                             />
-
+                            {errors.exp && <p className='red'><i>{errors.exp.message}</i></p>}
                         </div>
 
 
@@ -116,16 +136,23 @@ const Payment = () => {
 
                                 type="text"
 
+                                {...register("cvc", {
+                                    required: {
+                                        value: true,
+                                        message: "Required!"
+                                    }
+                                })}
+
                                 id="card_cvc_field"
 
                                 className="form-control"
 
-                                required
+                            // required
 
 
 
                             />
-
+                            {errors.cvc && <p className='red'><i>{errors.cvc.message}</i></p>}
                         </div>
 
 

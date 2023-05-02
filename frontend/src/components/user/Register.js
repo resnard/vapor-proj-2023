@@ -1,17 +1,21 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
-
+import { toast, ToastContainer } from 'react-toastify';
 // import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { registeruser, clearErrors } from '../../actions/userActions'
 import { useForm } from "react-hook-form";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const Register = () => {
 
     const { register, handleSubmit, watch, formState:{errors}} = useForm();
     const onSubmit = data => console.log(data);
-
+    const notify = (message = '') => toast.success(message, {
+		icon: () =>  <HowToRegIcon color='success'/> ,
+        position: toast.POSITION.TOP_LEFT
+    });
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -50,7 +54,7 @@ const Register = () => {
         formData.set('email', email);
         formData.set('password', password);
         formData.set('avatar', avatar);
-
+        notify('Registration Successful!')
         dispatch(registeruser(formData))
     }
 

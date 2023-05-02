@@ -21,6 +21,7 @@ const { isAuthenticatedUser,
 // router.get('/products', isAuthenticatedUser,authorizeRoles('admin'),getProducts);
 // router.get('/products',  isAuthenticatedUser,  authorizeRoles('admin','user'), getProducts)
 router.get('/products', getProducts)
+router.get('/products/All', getAdminProducts)
 // router.post('/admin/product/new', isAuthenticatedUser, authorizeRoles('admin'), newProduct);
 router.get('/product/:id', getSingleProduct);
 router.route('/admin/product/:id').put(isAuthenticatedUser, authorizeRoles('admin'),  upload.array('images', 10), updateProduct).delete(isAuthenticatedUser, authorizeRoles('admin'), deleteProduct);

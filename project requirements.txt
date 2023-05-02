@@ -14,7 +14,7 @@ mp2 React CRUD components for mp1 (done)
 
 
 
-mp3 Node/express CRUD api
+mp3 Node/express CRUD api (done)
 
 
 
@@ -52,7 +52,7 @@ search component/api on homepage  10pts
 
 
 
-search component/api with autocomplete on homepage  you can use react-autocomplete react-search-autocomplete or equivalent libraries 15pts
+search component/api with autocomplete on homepage  you can use react-autocomplete react-search-autocomplete or equivalent libraries 15pts (done)
 
 
 
@@ -60,7 +60,7 @@ quiz 3 15pts
 
 
 
-pagination on homepage (datatable pagination is not applicable) 10pts
+pagination on homepage (datatable pagination is not applicable) 10pts (done)
 
 infinite scroll on homepage react-infinite-scroll-component 15pts
 
@@ -70,7 +70,7 @@ quiz 4 15pts
 
 
 
-three(3) js charts  (bar, pie and line ). simple count/average/percentages REchart or chart-js 10pts
+three(3) js charts  (bar, pie and line ). simple count/average/percentages REchart or chart-js 10pts (done)
 
 
 
@@ -84,7 +84,7 @@ unit test 2 20pts
 
 Login/Logout Authentication with token generation  15pts
 
-google or facebook Login/Logout Authentication with token generation react-oauth/google react-facebook-login 20pts
+google or facebook Login/Logout Authentication with token generation react-oauth/google react-facebook-login 20pts (done)
 
 
 
@@ -92,7 +92,7 @@ unit test 3 20pts
 
 stateless components props 10pts
 
-stateful components using useState hook 15pts
+stateful components using useState hook 15pts (done)
 
 Redux for state management 20pts  
 

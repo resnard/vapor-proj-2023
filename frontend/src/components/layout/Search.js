@@ -13,7 +13,7 @@ const Search = () => {
  
   const fetchProductsData = () => {
     // fetch("https://jsonplaceholder.typicode.com/users")
-    fetch(`${process.env.REACT_APP_API}/api/v1/products`)
+    fetch(`${process.env.REACT_APP_API}/api/v1/products/All`)
       .then(response => {
         return response.json()
       })
@@ -38,10 +38,11 @@ const Search = () => {
         } 
     }
 console.log("keyword: ",keyword)
-    return (
+    return ( 
         <form onSubmit={searchHandler} >
             <div className="input-group mb-2">
             <Autocomplete
+            
              onChange={(event, value) => setKeyword(value)}
             // filterOptions={products.map((product) => product.name)}
         freeSolo
@@ -52,6 +53,7 @@ console.log("keyword: ",keyword)
           <TextField
           defaultValue="Small"
             {...params}
+            onClick={()=>fetchProductsData()}
             onChange={(e) => setKeyword(e.target.value)}
             // label="Search input"
             placeholder="Enter Game Title ..."
